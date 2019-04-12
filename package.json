@@ -13,7 +13,7 @@
     "url": "git+https://github.com/likezninjaz/capucco.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Evgenii Studitskikh",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/likezninjaz/capucco/issues"
@@ -22,6 +22,14 @@
   "dependencies": {
     "next": "^8.0.4",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "typescript": "^3.4.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/next": "^8.0.3",
+    "@types/node": "^11.13.4",
+    "@types/react": "^16.8.13",
+    "@types/react-dom": "^16.8.4"
   }
 }
