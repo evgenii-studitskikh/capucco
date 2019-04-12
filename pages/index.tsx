@@ -1,14 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import Link from 'next/link';
+const Search = styled.div`
+  border: 1px solid black;
+`;
 
-const Index = () => (
-  <div>
-    <Link href="/detail">
-      <button>Go to Detail Page</button>
-    </Link>
-    <p>Hello Capucco</p>
-  </div>
-)
-
-export default Index;
+export default class extends React.Component {
+  render() {    
+    return (
+      <Search>
+        <p>Hello Next.js</p>
+      </Search>
+    )
+  }
+}
