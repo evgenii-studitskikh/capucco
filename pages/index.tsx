@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 
+import Header from '../components/Header';
 import SearchForm from '../components/SearchForm';
 
 const Container = styled.div`
@@ -39,6 +40,7 @@ export default class extends React.Component {
             font: 12px Arial;
           }
         `}</style>
+        <Header />
         <SearchForm />
       </Container>
     )
