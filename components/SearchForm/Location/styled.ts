@@ -12,6 +12,8 @@ export const Field = styled.input`
   font-size: 16px;
   border: none;
   border-radius: 2px;
+  background: url("/static/icons/place.svg") #FFFFFF 5px center no-repeat;
+  background-size: 25px;
   outline: none;
 `;
 

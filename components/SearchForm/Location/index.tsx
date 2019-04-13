@@ -6,20 +6,23 @@ import {
   Dropdown,
   Place,
 } from './styled';
+import {
+  ILocation,
+} from '../types';
 
-interface IPlace {
-  id: number,
-  name: string,
+interface ILocationProps {
+  locationValue: ILocation,
+  onLocationChange: (location: ILocation) => void
 }
 
 interface ILocationState {
   inputValue: string,
   isDropDownVisible: boolean,
-  data: IPlace[],
+  data: ILocation[],
   isDataLoading: boolean,
 }
 
-export default class Location extends React.Component<any, ILocationState> {
+export default class Location extends React.Component<ILocationProps, ILocationState> {
 
   public state = {
     inputValue: '',
@@ -43,28 +46,42 @@ export default class Location extends React.Component<any, ILocationState> {
 
   public handleInputChange = (value: string) => {
 
+    const {
+      onLocationChange
+    } = this.props;
+
+    onLocationChange({
+      id: 0,
+      name: ''
+    });
+
     this.setState({
       inputValue: value,
       isDropDownVisible: true,
     })
   }
 
-  public handlePlaceClick = (id: number) => {
+  static getDerivedStateFromProps = (nextProps: ILocationProps, prevState: ILocationState) => {
 
-    window.console.log(`Handle location id ${id} click`);
+    return {
+      inputValue: nextProps.locationValue.id === 0
+        ? prevState.inputValue 
+        : nextProps.locationValue.name
+    };
   }
 
   render() {
 
     const { 
       isDropDownVisible,
-      data, 
+      data,
+      inputValue,
     } = this.state;
 
     const {
-      inputValue
+      onLocationChange
     } = this.props;
-    
+  
     return (
       <Container>
         <Field
@@ -74,10 +91,10 @@ export default class Location extends React.Component<any, ILocationState> {
         />
         {isDropDownVisible &&
           <Dropdown>
-            {data.map((place: IPlace, index: number) => 
+            {data.map((place: ILocation, index: number) => 
               <Place 
                 key={index}
-                onClick={() => this.handlePlaceClick(place.id)}
+                onClick={() => onLocationChange(place)}
               >
                 {place.name}
               </Place>
