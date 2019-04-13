@@ -1,16 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Search = styled.div`
-  border: 1px solid black;
+import SearchForm from '../components/SearchForm';
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
 `;
 
 export default class extends React.Component {
   render() {    
     return (
-      <Search>
-        <p>Hello Next.js</p>
-      </Search>
+      <Container>
+        <SearchForm />
+      </Container>
     )
   }
 }
