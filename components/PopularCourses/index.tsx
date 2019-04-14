@@ -35,21 +35,21 @@ export default class PopularCourses extends React.Component<any, IPopularCourses
         background: 'https://images.unsplash.com/photo-1524281423221-234569bc0438?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'
       },
       {
-        title: 'Python courses',
+        title: 'Python courses in Berlin',
         description: 'Blab lasld lasdl asld asl d',
         location: 10,
         subject: 44,
         background: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'
       },
       {
-        title: 'Python courses',
+        title: 'Kayaking in Phuket',
         description: 'Blab lasld lasdl asld asl d',
         location: 10,
         subject: 44,
         background: 'https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
       },
       {
-        title: 'Python courses',
+        title: 'Pizza cooking in Roma',
         description: 'Blab lasld lasdl asld asl d',
         location: 10,
         subject: 44,

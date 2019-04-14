@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Head from 'next/head';
 
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import SearchForm from '../components/SearchForm';
 import PopularCourses from '../components/PopularCourses';
 
@@ -41,6 +42,7 @@ export default class extends React.Component {
           <SearchForm />
         </SearchContainer>
         <PopularCourses />
+        <Footer />
       </Container>
     )
   }
