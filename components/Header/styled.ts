@@ -21,4 +21,5 @@ export const Logo = styled.div`
   background: url("/static/images/logo.svg") no-repeat;
   background-size: 100%;
   border-right: 1px solid #eee;
+  cursor: pointer;
 `;

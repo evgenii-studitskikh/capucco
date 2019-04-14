@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 import {
   Container,
@@ -9,7 +10,11 @@ export default class extends React.Component {
   render() {    
     return (
       <Container>
-        <Logo />
+        <Link
+          href={`/`}
+        >
+          <Logo />
+        </Link>
       </Container>
     )
   }
