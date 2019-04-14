@@ -4,26 +4,22 @@ import Head from 'next/head';
 
 import Header from '../components/Header';
 import SearchForm from '../components/SearchForm';
+import PopularCourses from '../components/PopularCourses';
 
 const Container = styled.div`
   position: relative;
+  width: 100%;
+  height: 500px;
+  background: url("/static/images/background-main.jpg") center no-repeat;
+  background-size: cover;
+`;
+
+const SearchContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100vh;
-  background: url("/static/images/background-main.jpg") center no-repeat;
-  background-size: cover;
-
-  &::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #000000;
-    opacity: 0.6;
-    z-index: 1;
-  }
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
 `;
 
 export default class extends React.Component {
@@ -41,7 +37,10 @@ export default class extends React.Component {
           }
         `}</style>
         <Header />
-        <SearchForm />
+        <SearchContainer>
+          <SearchForm />
+        </SearchContainer>
+        <PopularCourses />
       </Container>
     )
   }
