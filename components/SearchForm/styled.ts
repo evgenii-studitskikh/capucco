@@ -1,11 +1,20 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  z-index: 2;
+`;
+
+export const Header = styled.h1`
+  margin: 10px 0 10px 3px;
+  font-size: 36px;
+  color: #FFFFFF;
+`;
+
+export const Form = styled.div`
   display: flex;
   padding: 5px;
   background: rgba(145, 145, 145, 0.2);
   border-radius: 2px;
-  z-index: 2;
 `;
 
 export const ApplyButton = styled.button`

@@ -61,6 +61,19 @@ export default class Location extends React.Component<ILocationProps, ILocationS
     })
   }
 
+  public handleLocationChange = (location: ILocation) => {
+
+    const {
+      onLocationChange
+    } = this.props;
+
+    onLocationChange(location);
+
+    this.setState({
+      isDropDownVisible: false,
+    })
+  }
+
   static getDerivedStateFromProps = (nextProps: ILocationProps, prevState: ILocationState) => {
 
     return {
@@ -77,10 +90,6 @@ export default class Location extends React.Component<ILocationProps, ILocationS
       data,
       inputValue,
     } = this.state;
-
-    const {
-      onLocationChange
-    } = this.props;
   
     return (
       <Container>
@@ -94,7 +103,7 @@ export default class Location extends React.Component<ILocationProps, ILocationS
             {data.map((place: ILocation, index: number) => 
               <Place 
                 key={index}
-                onClick={() => onLocationChange(place)}
+                onClick={() => this.handleLocationChange(place)}
               >
                 {place.name}
               </Place>

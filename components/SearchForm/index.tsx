@@ -3,9 +3,12 @@ import Link from 'next/link'
 
 import {
   Container,
+  Header,
+  Form,
   ApplyButton,
 } from './styled'
 import Location from './Location';
+import Subject from './Subject';
 import {
   ILocation
 } from './types';
@@ -14,7 +17,7 @@ interface ISearchFormState {
   location: ILocation
 }
 
-export default class SearchForm extends React.Component<null, ISearchFormState> {
+export default class SearchForm extends React.Component<any, ISearchFormState> {
 
   public state = {
     location: {
@@ -36,15 +39,19 @@ export default class SearchForm extends React.Component<null, ISearchFormState> 
     
     return (
       <Container>
-        <Location
-          locationValue={location}
-          onLocationChange={this.handleLocationChange}
-        />
-        <Link href={`/searchresults?location=${location.id}`}>
-          <ApplyButton>
-            Search
-          </ApplyButton>
-        </Link>
+        <Header>Learn anything and anywhere</Header>
+        <Form>
+          <Location
+            locationValue={location}
+            onLocationChange={this.handleLocationChange}
+          />
+          <Subject />
+          <Link href={`/searchresults?location=${location.id}`}>
+            <ApplyButton>
+              Search
+            </ApplyButton>
+          </Link>
+        </Form>
       </Container>
     )
   }
