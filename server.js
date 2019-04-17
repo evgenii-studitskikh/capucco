@@ -10,9 +10,13 @@ app
   .then(() => {
     const server = express()
 
-    server.get('/searchresults', (req, res) => {
-      const actualPage = '/post'
-      const queryParams = { title: req.params.id }
+    server.get('/getCourses', (req, res) => {
+      const actualPage = '/searchresults'
+      const queryParams = { 
+        location: req.params.location,
+        subject: req.params.subject
+      }
+      
       app.render(req, res, actualPage, queryParams)
     })
 

@@ -77,7 +77,8 @@ export default class PopularCourses extends React.Component<any, IPopularCourses
             {data.map((card: ICourse, index: number) =>
               <Link
                 key={index}
-                href={`/searchresults?location=${card.location}&subject=${card.subject}`}
+                href={`/getCourses?location=${card.location}&subject=${card.subject}`}
+                as={`/searchresults?location=${card.location}&subject=${card.subject}`}
               >
                 <Card
                   backgroundPic={card.background}
