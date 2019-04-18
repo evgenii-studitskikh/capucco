@@ -5,7 +5,8 @@ export const Container = styled.div`
   width: calc(100% - 20px);
   padding: 10px;
   border-radius: 2px;
-  box-shadow: 0px 6px 20px rgba(0,0,0,0.06);
+  box-shadow: 0px 3px 5px 0 rgba(174,174,174,0.5);
+  margin-top: 20px;
 `;
 
 export const Image = styled.img`
