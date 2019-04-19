@@ -1,18 +1,25 @@
 import React from 'react';
+import { withNamespaces } from '../../i18n';
 
 import {
   Container,
   Wrapper,
 } from './styled'
 
-export default class extends React.Component {
-  render() {    
+class Footer extends React.Component {
+  
+  render() {
+
+    const { t }: any = this.props;
+
     return (
       <Container>
         <Wrapper>
-          Copyright © 2019 Evgenii Studitskikh. All rights reserved.
+          {t('copyright')}
         </Wrapper>
       </Container>
     )
   }
 }
+
+export default withNamespaces('footer')(Footer)

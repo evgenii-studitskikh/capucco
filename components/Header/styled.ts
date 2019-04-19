@@ -4,9 +4,12 @@ export const Container = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 30px);
   height: 50px;
-  padding: 10px 0;
+  padding: 10px 30px 10px 0;
   background: #FFFFFF;
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);
   z-index: 2;

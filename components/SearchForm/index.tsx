@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link'
 
+import { withNamespaces } from '../../i18n';
 import {
   Container,
   Header,
@@ -17,7 +18,7 @@ interface ISearchFormState {
   location: ILocation
 }
 
-export default class SearchForm extends React.Component<any, ISearchFormState> {
+class SearchForm extends React.Component<any, ISearchFormState> {
 
   public state = {
     location: {
@@ -33,22 +34,27 @@ export default class SearchForm extends React.Component<any, ISearchFormState> {
 
   render() {
 
+    const { t }: any = this.props;
+
     const {
       location
     } = this.state;
     
     return (
       <Container>
-        <Header>Learn anything and anywhere</Header>
+        <Header>{t('header')}</Header>
         <Form>
           <Location
             locationValue={location}
             onLocationChange={this.handleLocationChange}
+            placeholder={t('location_placeholder')}
           />
-          <Subject />
+          <Subject
+            placeholder={t('subject_placeholder')}
+          />
           <Link href={`/searchresults?location=${location.id}`}>
             <ApplyButton>
-              Search
+              {t('button')}
             </ApplyButton>
           </Link>
         </Form>
@@ -56,3 +62,5 @@ export default class SearchForm extends React.Component<any, ISearchFormState> {
     )
   }
 }
+
+export default withNamespaces('search-form')(SearchForm)

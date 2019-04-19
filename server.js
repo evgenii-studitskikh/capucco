@@ -1,5 +1,7 @@
 const express = require('express')
 const next = require('next')
+const nextI18NextMiddleware = require('next-i18next/middleware')
+const nextI18next = require('./i18n')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -9,6 +11,8 @@ app
   .prepare()
   .then(() => {
     const server = express()
+
+    server.use(nextI18NextMiddleware(nextI18next))
 
     server.get('/getCourses', (req, res) => {
       const actualPage = '/searchresults'

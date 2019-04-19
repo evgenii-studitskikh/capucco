@@ -1,12 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 
+import LocalePicker from './LocalePicker';
 import {
   Container,
   Logo,
-} from './styled'
+} from './styled';
 
-export default class extends React.Component {
+export default class Header extends React.Component {
   render() {    
     return (
       <Container>
@@ -15,6 +16,7 @@ export default class extends React.Component {
         >
           <Logo />
         </Link>
+        <LocalePicker />
       </Container>
     )
   }

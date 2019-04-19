@@ -5,14 +5,22 @@ import {
   Field,
 } from './styled';
 
-export default class Subject extends React.Component {
+interface ISubjectProps {
+  placeholder: string
+}
+
+export default class Subject extends React.Component<ISubjectProps> {
 
   render() {
+
+    const {
+      placeholder
+    } = this.props;
 
     return (
       <Container>
         <Field
-          placeholder='Any subject'
+          placeholder={placeholder}
         />
       </Container>
     )

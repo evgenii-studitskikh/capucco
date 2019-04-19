@@ -12,7 +12,8 @@ import {
 
 interface ILocationProps {
   locationValue: ILocation,
-  onLocationChange: (location: ILocation) => void
+  onLocationChange: (location: ILocation) => void,
+  placeholder: string,
 }
 
 interface ILocationState {
@@ -90,11 +91,15 @@ export default class Location extends React.Component<ILocationProps, ILocationS
       data,
       inputValue,
     } = this.state;
+
+    const {
+      placeholder
+    } = this.props;
   
     return (
       <Container>
         <Field
-          placeholder='Where do you want to learn?'
+          placeholder={placeholder}
           onChange={(e: any) => this.handleInputChange(e.target.value)}
           value={inputValue}
         />
