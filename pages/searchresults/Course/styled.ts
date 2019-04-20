@@ -32,18 +32,38 @@ export const Description = styled.p`
 export const Actions = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 30%;
   margin-left: 10px;
 `;
 
 export const Price = styled.span`
+  margin: 10px 0;
   font-size: 14px;
 `;
 
 export const Options = styled.ul`
+  list-style-type: none;
+  padding: 0;
 `;
 
 export const Option = styled.li`
+  display: inline;
+  padding: 5px;
+  margin-right: 10px;
+  border: 1px solid #64c178;
+  border-radius: 2px;
+  color: #64c178;
 `;
 
-export const Book = styled.button``;
+export const Book = styled.button`
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 2px;
+  background: #0666CC;
+  font-size: 14px;
+  color: #FFFFFF;
+  cursor: pointer;
+  outline: none;
+`;
