@@ -14,6 +14,13 @@ app
 
     server.use(nextI18NextMiddleware(nextI18next))
 
+    server.get('/', (req, res) => {
+      const actualPage = '/'
+      const queryParams = {}
+      
+      app.render(req, res, actualPage, queryParams)
+    })
+
     server.get('/getCourses', (req, res) => {
       const actualPage = '/searchresults'
       const queryParams = { 
@@ -25,7 +32,7 @@ app
     })
 
     server.get('/course', (req, res) => {
-      const actualPage = '/searchresults'
+      const actualPage = '/course'
       const queryParams = { 
         id: req.params.id
       }
