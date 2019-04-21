@@ -2,9 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 
 import LocalePicker from './LocalePicker';
+import Feedback from './Feedback';
 import {
   Container,
   Logo,
+  RightBar,
 } from './styled';
 
 export default class Header extends React.Component {
@@ -16,7 +18,10 @@ export default class Header extends React.Component {
         >
           <Logo />
         </Link>
-        <LocalePicker />
+        <RightBar>
+          <LocalePicker />
+          <Feedback />
+        </RightBar>
       </Container>
     )
   }

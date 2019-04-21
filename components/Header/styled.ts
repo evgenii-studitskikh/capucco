@@ -26,3 +26,8 @@ export const Logo = styled.div`
   border-right: 1px solid #eee;
   cursor: pointer;
 `;
+
+export const RightBar = styled.div`
+  display: flex;
+  align-items: center;
+`;
