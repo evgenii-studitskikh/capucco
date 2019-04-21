@@ -24,6 +24,15 @@ app
       app.render(req, res, actualPage, queryParams)
     })
 
+    server.get('/course', (req, res) => {
+      const actualPage = '/searchresults'
+      const queryParams = { 
+        id: req.params.id
+      }
+      
+      app.render(req, res, actualPage, queryParams)
+    })
+
     server.get('*', (req, res) => {
       return handle(req, res)
     })

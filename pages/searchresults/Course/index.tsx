@@ -56,7 +56,7 @@ export default class Course extends React.Component<ICourseProps> {
         <Actions>
           <Price>$ {price}</Price>
           <Link
-            href={`/course?location=${id}`}
+            href={`/course?id=${id}`}
           >
             <Book>Book</Book>
           </Link>
