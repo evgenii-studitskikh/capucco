@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SearchForm from '../components/SearchForm';
 import PopularCourses from '../components/PopularCourses';
+import { loadFirebase } from '../lib/db';
 
 const Container = styled.div`
   position: relative;
@@ -27,8 +28,23 @@ const SearchContainer = styled.div`
 export default class extends React.Component {
 
   static async getInitialProps() {
+
+    let firebase = await loadFirebase();  
+    let result = await new Promise((resolve, reject) => {
+      firebase.firestore().collection('locations')
+        .get()
+        .then((snapshot: any) => {
+          resolve(snapshot)
+        })
+        .catch((error: any) => {
+          reject([])
+        })
+    })
+
+    console.log(result);
+
     return {
-      namespacesRequired: ['footer']
+      namespacesRequired: ['common', 'search-form', 'footer']
     }
   }
 

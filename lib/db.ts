@@ -1,7 +1,7 @@
-import firebse from 'firebase/app'
-import 'firebase/firestone'
+import firebase from 'firebase/app';
+import 'firebase/firestore'
 
-export function loadDB() {
+export const loadFirebase = () => {
 
   // Initialize Firebase
   const config = {
@@ -13,7 +13,10 @@ export function loadDB() {
     messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
   }
 
-  firebase.initializeApp(config)
+  
+  if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+  }
 
   return firebase
 }
