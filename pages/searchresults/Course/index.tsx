@@ -47,8 +47,8 @@ export default class Course extends React.Component<ICourseProps> {
           <Title>{title}</Title>
           <Description>{description}</Description>
           <Options></Options>
-          {options && options.length > 0 && options.map((option: string) =>
-            <Option>{option}</Option>
+          {options && options.length > 0 && options.map((option: string, index: number) =>
+            <Option key={index}>{option}</Option>
           )}
           <Options>
           </Options>

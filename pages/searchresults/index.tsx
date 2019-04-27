@@ -12,6 +12,7 @@ import {
   Description,
 } from './styled';
 import Course from './Course';
+import { loadFirebase } from '../../lib/db';
 
 interface ISearchresultProps {
   router: any,
@@ -41,18 +42,21 @@ class Searchresult extends React.Component<ISearchresultProps> {
     ]
   }
 
-  // uncomment this block when API will be ready
+  static getInitialProps = () =>
 
-  // static getInitialProps = async(context: any) => {
-
-
-  //   const res = await fetch(`https://api.tvmaze.com/search/shows?q=${context.query.location}`);
-  //   const data = await res.json();
-
-  //   return {
-  //     courses: data.map((entry: any) => entry.show)
-  //   }
-  // }
+    loadFirebase().firestore().collection('locations')
+      .get()
+      .then((snapshot: any) => {
+        
+        let data: any[] = [];
+        snapshot.forEach((location: any) => {
+          data.push({
+            id: location.id,
+            ...location.data()
+          });
+        })
+        return { locations: data };
+      })
 
   render() {
 
@@ -82,8 +86,11 @@ class Searchresult extends React.Component<ISearchresultProps> {
         <Wrapper>
           <Title>Results for id {router.query.location} location</Title>
           <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Description>
-          {coursesData && coursesData.length > 0 && coursesData.map((data: any) =>
-            <Course data={data}/>
+          {coursesData && coursesData.length > 0 && coursesData.map((data: any, index: number) =>
+            <Course 
+              key={index}
+              data={data}
+            />
           )}
         </Wrapper>
       </Container>
