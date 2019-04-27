@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  justify-content: space-between;
   width: calc(100% - 20px);
+  min-height: 200px;
   padding: 10px;
   border-radius: 2px;
   box-shadow: 0px 3px 5px 0 rgba(174,174,174,0.5);
@@ -17,6 +19,12 @@ export const Image = styled.img`
 `;
 
 export const Info = styled.div`
+  display: flex;
+`;
+
+export const InfoFields = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-left: 10px;
 `;
 
@@ -33,7 +41,7 @@ export const Actions = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 30%;
+  min-width: 200px;
   margin-left: 10px;
 `;
 

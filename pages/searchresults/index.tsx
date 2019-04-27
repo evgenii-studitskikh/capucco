@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
-import fetch from 'isomorphic-unfetch';
 
 import Header from '../../components/Header';
 import Filter from './Filter';
@@ -16,57 +15,33 @@ import { loadFirebase } from '../../lib/db';
 
 interface ISearchresultProps {
   router: any,
-  courses: any[]
+  coursesData: any
 }
 
 class Searchresult extends React.Component<ISearchresultProps> {
 
-  public state = {
-    coursesData: [
-      {
-        id: 11,
-        title: 'Surfing school at Kamala Beach',
-        description: 'It was my first surfing lesson with Rick! I gotta say, he is the best and obviously a professional surfer! If you are looking for a surf lesson, here is the answer you are looking for. Does not matter which levels you are, he would definitely give you the best experience!!',
-        image: 'https://images.unsplash.com/photo-1542353436-312f0e1f67ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-        price: 1250,
-        options: ['Free cancelation avalible', 'Not far from the beach']
-      },
-      {
-        id: 12,
-        title: 'Stanford Python Intro Course',
-        description: 'Learn basic syntax, programming, and packages for data manipulation and exploration. Accessible to beginners new to the language, enabling further study of advanced topics. Grad Certificate Programs. Flexible Courses. Request Information Today. Access Free Content.',
-        image: 'https://images.unsplash.com/photo-1471115853179-bb1d604434e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1559&q=80',
-        price: 550,
-        options: ['Free cancelation avalible', 'Best price']
-      }
-    ]
-  }
-
   static getInitialProps = () =>
 
-    loadFirebase().firestore().collection('locations')
+    loadFirebase().firestore().collection('courses')
       .get()
       .then((snapshot: any) => {
         
         let data: any[] = [];
-        snapshot.forEach((location: any) => {
+        snapshot.forEach((course: any) => {
           data.push({
-            id: location.id,
-            ...location.data()
+            id: course.id,
+            ...course.data()
           });
         })
-        return { locations: data };
+        return { coursesData: data };
       })
 
   render() {
 
     const {
-      router
-    } = this.props
-
-    const {
+      router,
       coursesData
-    } = this.state;
+    } = this.props
 
     return (
       <Container>
