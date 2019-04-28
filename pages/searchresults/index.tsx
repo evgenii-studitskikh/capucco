@@ -9,38 +9,77 @@ import {
   Wrapper,
   Title,
   Description,
+  Sorting,
 } from './styled';
 import Course from './Course';
 import { loadFirebase } from '../../lib/db';
 
 interface ISearchresultProps {
   router: any,
-  coursesData: any
+  coursesData: any,
+  locationData: any,
 }
 
 class Searchresult extends React.Component<ISearchresultProps> {
 
-  static getInitialProps = () =>
+  static async getInitialProps ({ req, query }: any) {
 
-    loadFirebase().firestore().collection('courses')
-      .get()
-      .then((snapshot: any) => {
-        
-        let data: any[] = [];
-        snapshot.forEach((course: any) => {
-          data.push({
-            id: course.id,
-            ...course.data()
-          });
-        })
-        return { coursesData: data };
+    let coursesData: any[] = [];
+    let locationData: any = {
+      name: ''
+    };
+
+    const locationId = req 
+      ? Number(req.query.location)
+      : Number(query.location)
+
+    // get courses data by location ID
+    await loadFirebase()
+    .firestore()
+    .collection('courses')
+    .where('location', '==', locationId)
+    .get()
+    .then((snapshot: any) => {
+      
+      snapshot.forEach((course: any) => {
+        coursesData.push({
+          id: course.id,
+          ...course.data()
+        });
       })
+    })
+    .catch((err) => {
+      console.error('Error getting courses', err);
+    })
+
+    // get location data by its ID
+    await loadFirebase()
+    .firestore()
+    .collection('locations')
+    .where('id', '==', locationId)
+    .get()
+    .then((snapshot: any) => {
+      
+      snapshot.forEach((location: any) => {
+        locationData = location.data();
+      })
+    })
+    .catch((err) => {
+      console.error('Error getting location', err);
+    })
+    
+    return { 
+      coursesData: coursesData,
+      locationData: locationData,
+      namespacesRequired: ['common', 'search-form', 'footer']
+    };
+  }
 
   render() {
 
     const {
-      router,
-      coursesData
+      coursesData,
+      locationData,
     } = this.props
 
     return (
@@ -59,8 +98,18 @@ class Searchresult extends React.Component<ISearchresultProps> {
         <Header />
         <Filter />
         <Wrapper>
-          <Title>Results for id {router.query.location} location</Title>
-          <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Description>
+          <Title>Courses in {locationData.name}</Title>
+
+          {locationData.description &&
+            <Description>{locationData.description}</Description>
+          }
+
+          {coursesData && coursesData.length > 0 &&
+            <Sorting>
+              Sort by
+            </Sorting>
+          }
+
           {coursesData && coursesData.length > 0 && coursesData.map((data: any, index: number) =>
             <Course 
               key={index}
