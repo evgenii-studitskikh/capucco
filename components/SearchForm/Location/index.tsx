@@ -9,6 +9,7 @@ import {
 import {
   ILocation,
 } from '../types';
+import { loadFirebase } from '../../../lib/db';
 
 interface ILocationProps {
   locationValue: ILocation,
@@ -18,6 +19,7 @@ interface ILocationProps {
 
 interface ILocationState {
   inputValue: string,
+  isTyping: any,
   isDropDownVisible: boolean,
   data: ILocation[],
   isDataLoading: boolean,
@@ -27,22 +29,10 @@ export default class Location extends React.Component<ILocationProps, ILocationS
 
   public state = {
     inputValue: '',
+    isTyping: null,
     isDropDownVisible: false,
     isDataLoading: true,
-    data: [
-      {
-        id: 1,
-        name: 'Los Angeles, California, USA'
-      },
-      {
-        id: 2,
-        name: 'Los Cristianos, Canary Islands, Spain'
-      },
-      {
-        id: 3,
-        name: 'New York, New York State, USA'
-      },
-    ]
+    data: []
   }
 
   public handleInputChange = (value: string) => {
@@ -60,6 +50,56 @@ export default class Location extends React.Component<ILocationProps, ILocationS
       inputValue: value,
       isDropDownVisible: true,
     })
+  }
+
+  public getLocationsByQuery = async(query: string) => {
+
+    const locationsData: any[] = [];
+
+    await loadFirebase()
+    .firestore()
+    .collection('locations')
+    .orderBy('name')
+    .startAt(query)
+    .endAt(query+"\uf8ff")
+    .get()
+    .then((snapshot: any) => {
+      
+      snapshot.forEach((course: any) => {
+
+        locationsData.push({
+          id: course.id,
+          ...course.data()
+        });
+      })
+    })
+    .catch((err) => {
+      console.error('Error getting courses', err);
+    })
+
+    this.setState({
+      data: query ? locationsData : []
+    })
+  }
+
+  public handleInputKeyUp = (e: any) => {
+
+    const {
+      isTyping
+    } = this.state;
+
+    const value = e.target.value;
+
+    if (isTyping) {
+      clearTimeout(isTyping);
+    }
+
+    this.setState({
+      isTyping: setTimeout(() => {
+        this.getLocationsByQuery(value)
+      }, 500)
+   });
+    
   }
 
   public handleLocationChange = (location: ILocation) => {
@@ -101,6 +141,7 @@ export default class Location extends React.Component<ILocationProps, ILocationS
         <Field
           placeholder={placeholder}
           onChange={(e: any) => this.handleInputChange(e.target.value)}
+          onKeyUp={(e: any) => this.handleInputKeyUp(e)}
           value={inputValue}
         />
         {isDropDownVisible &&

@@ -19,7 +19,7 @@ export const Field = styled.input`
 
 export const Dropdown = styled.div`
   position: absolute;
-  top: 62px;
+  top: 57px;
   left: 0;
   width: 380px;
   background: #FFFFFF;
