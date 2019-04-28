@@ -47,7 +47,7 @@ export const Actions = styled.div`
 
 export const Price = styled.span`
   margin: 10px 0;
-  font-size: 14px;
+  font-size: 18px;
 `;
 
 export const Options = styled.ul`

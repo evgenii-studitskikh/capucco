@@ -9,7 +9,7 @@ export const Field = styled.input`
   width: 250px;
   height: 50px;
   padding-left: 15px;
-  margin-left: 5px;
+  margin-left: 6px;
   font-size: 16px;
   border: none;
   border-radius: 2px;

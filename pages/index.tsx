@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 
-import { withNamespaces } from '../i18n';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SearchForm from '../components/SearchForm';
@@ -26,7 +25,7 @@ const SearchContainer = styled.div`
 
 export default class extends React.Component {
 
-  static async getInitialProps() {
+  static getInitialProps() {
 
     return {
       namespacesRequired: ['common', 'search-form', 'footer']

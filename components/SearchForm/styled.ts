@@ -19,7 +19,7 @@ export const Form = styled.div`
 
 export const ApplyButton = styled.button`
   width: 100px;
-  margin-left: 5px;
+  margin-left: 6px;
   font-size: 16px;
   background: #0666CC;
   color: #FFFFFF;

@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-top: 70px;
+  margin: 70px 0;
   background: #FFFFFF;
 `;
 
@@ -19,4 +19,10 @@ export const Title = styled.h1`
 
 export const Description = styled.p`
   font-size: 12px;
+`;
+export const Sorting = styled.div`
+  display: flex;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #B1DBFF;
+  font-size: 14px;
 `;
