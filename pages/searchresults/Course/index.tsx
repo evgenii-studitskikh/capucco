@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import {
   Container,
+  ImageContainer,
   Image,
   Info,
   InfoFields,
@@ -35,7 +36,9 @@ export default class Course extends React.Component<ICourseProps> {
     return (
       <Container>
         <Info>
-          <Image src={image} />
+          <ImageContainer>
+            <Image src={image} />
+          </ImageContainer>
           <InfoFields>
             <Title>{title}</Title>
             <Description>{description}</Description>
