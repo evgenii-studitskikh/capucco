@@ -17,6 +17,10 @@ export const Wrapper = styled.div`
   color: #434656;
 `;
 
+export const FilterItem = styled.div`
+  position: relative;
+`;
+
 export const FilterButton = styled.button`
   position: relative;
   width: 100px;
@@ -40,4 +44,14 @@ export const FilterButton = styled.button`
     border-left: solid 4px transparent;
     border-right: solid 4px transparent;
   }
+`;
+
+export const FilterDropdown = styled.div`
+  position: absolute;
+  top: 35px;
+  left: 15px;
+  padding: 5px;
+  background: #FFFFFF;
+  border-radius: 2px;
+  box-shadow: 0px 3px 5px 0 rgba(174,174,174,0.5);
 `;
