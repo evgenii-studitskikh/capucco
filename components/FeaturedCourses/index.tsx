@@ -19,11 +19,11 @@ interface ICourse {
   background: string,
 }
 
-interface IPopularCoursesState {
+interface IFeaturedCoursesState {
   data: ICourse[]
 }
 
-export default class PopularCourses extends React.Component<any, IPopularCoursesState> {
+export default class FeaturedCourses extends React.Component<any, IFeaturedCoursesState> {
 
   public state = {
     data: [
@@ -72,7 +72,7 @@ export default class PopularCourses extends React.Component<any, IPopularCourses
     return (
       <Container>
         <Wrapper>
-          <Header>Discover the most popular experiences</Header>
+          <Header>Discover the most effective experiences</Header>
           <Cards>
             {data.map((card: ICourse, index: number) =>
               <Link

@@ -5,7 +5,8 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SearchForm from '../components/SearchForm';
-import PopularCourses from '../components/PopularCourses';
+import FeaturedCourses from '../components/FeaturedCourses';
+import PopularPlaces from '../components/PopularPlaces';
 
 const Container = styled.div`
   position: relative;
@@ -50,7 +51,8 @@ export default class extends React.Component {
         <SearchContainer>
           <SearchForm />
         </SearchContainer>
-        <PopularCourses />
+        <FeaturedCourses />
+        <PopularPlaces />
         <Footer />
       </Container>
     )
