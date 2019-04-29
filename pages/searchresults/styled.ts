@@ -5,12 +5,13 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin: 70px 0;
+  margin-top: 70px;
   background: #FFFFFF;
 `;
 
 export const Wrapper = styled.div`
   width: 1132px;
+  margin-bottom: 20px;
 `;
 
 export const Title = styled.h1`
@@ -23,6 +24,6 @@ export const Description = styled.p`
 export const Sorting = styled.div`
   display: flex;
   padding-bottom: 5px;
-  border-bottom: 1px solid #B1DBFF;
+  border-bottom: 1px solid #eee;
   font-size: 14px;
 `;
