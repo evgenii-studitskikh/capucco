@@ -5,7 +5,9 @@ export const Container = styled.div`
   justify-content: center;
   height: 50px;
   padding: 10px;
+  margin-top: 30px;
   background: #FFFFFF;
+  border-top: 1px solid #eee;
 `;
 
 export const Wrapper = styled.div`

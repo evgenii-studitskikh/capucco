@@ -6,10 +6,12 @@ import Feedback from './Feedback';
 import {
   Container,
   Logo,
-  RightBar,
+  Column,
+  HeaderItem,
 } from './styled';
 
 export default class Header extends React.Component {
+
   render() {    
     return (
       <Container>
@@ -18,10 +20,32 @@ export default class Header extends React.Component {
         >
           <Logo />
         </Link>
-        <RightBar>
+        <Column>
+          <Link
+            href={`/about`}
+          >
+            <HeaderItem>About</HeaderItem>
+          </Link>
+          <Link
+            href={`/how-it-works`}
+          >
+            <HeaderItem>How it works</HeaderItem>
+          </Link>
+          <Link
+            href={`/faq`}
+          >
+            <HeaderItem>FAQ</HeaderItem>
+          </Link>
+          <Link
+            href={`/partnership`}
+          >
+            <HeaderItem>Partnership</HeaderItem>
+          </Link>
+        </Column>
+        <Column>
           <LocalePicker />
           <Feedback />
-        </RightBar>
+        </Column>
       </Container>
     )
   }
