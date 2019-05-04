@@ -3,11 +3,13 @@ import Head from 'next/head';
 import { withRouter } from 'next/router';
 
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import {
   Container,
+  Wrapper,
 } from '../styled';
 
-class Course extends React.Component {
+class About extends React.Component {
 
   render() {
 
@@ -25,10 +27,13 @@ class Course extends React.Component {
           }
         `}</style>
         <Header />
-        Course page
+        <Wrapper>
+          About
+        </Wrapper>
+        <Footer />
       </Container>
     )
   }
 }
 
-export default withRouter(Course)
+export default withRouter(About)

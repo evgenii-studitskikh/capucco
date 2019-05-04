@@ -12,11 +12,3 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   width: 1132px;
 `;
-
-export const Title = styled.h1`
-  font-size: 24px;
-`;
-
-export const Description = styled.p`
-  font-size: 12px;
-`;

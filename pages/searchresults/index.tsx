@@ -6,12 +6,14 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Filter from './Filter';
 import {
-  Container,
-  Wrapper,
   Title,
   Description,
   Sorting,
 } from './styled';
+import {
+  Container,
+  Wrapper,
+} from '../styled';
 import Course from './Course';
 import { loadFirebase } from '../../lib/db';
 
