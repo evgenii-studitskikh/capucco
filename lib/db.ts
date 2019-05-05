@@ -13,7 +13,6 @@ export const loadFirebase = () => {
     messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
   }
 
-  
   if (!firebase.apps.length) {
     firebase.initializeApp(config);
   }

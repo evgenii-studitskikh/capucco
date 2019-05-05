@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "now-build": "next build",
     "start": "next start -p $PORT"
   },
   "repository": {
@@ -15,7 +14,7 @@
   },
   "keywords": [],
   "author": "Evgenii Studitskikh",
-  "license": "ISC",
+  "license": "BSD 3-Clause",
   "bugs": {
     "url": "https://github.com/likezninjaz/capucco/issues"
   },
