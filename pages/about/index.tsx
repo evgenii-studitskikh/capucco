@@ -16,16 +16,8 @@ class About extends React.Component {
     return (
       <Container>
         <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta charSet="utf-8" />
           <title>Capucco: Learn anything and anywhere</title>
         </Head>
-        <style>{`
-          body { 
-            margin: 0;
-            font: 12px Arial;
-          }
-        `}</style>
         <Header />
         <Wrapper>
           About
