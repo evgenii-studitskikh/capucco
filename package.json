@@ -8,7 +8,7 @@
     "build": "next build",
     "now-build": "next build",
     "heroku-postbuild": "npm run build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js -p $PORT"
   },
   "repository": {
     "type": "git",
