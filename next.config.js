@@ -13,6 +13,5 @@ module.exports = withTypescript({
     config.plugins.push(new webpack.DefinePlugin(env));
 
     return config;
-  },
-  target: 'serverless'
+  }
 });
