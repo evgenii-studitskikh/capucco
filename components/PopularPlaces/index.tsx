@@ -8,6 +8,7 @@ import {
   Places,
   Place,
   PlaceCourses,
+  PlaceLink,
 } from './styled'
 
 export default class PopularPlaces extends React.Component {
@@ -83,15 +84,15 @@ export default class PopularPlaces extends React.Component {
           <Header>Popular destinations for learning the new</Header>
           <Places>
             {data.map((place: any, index: number) =>
-              <Link
-                key={index}
-                href={`/getCourses?location=${place.id}`}
-              >
-                <Place>
-                  {place.name}
-                  <PlaceCourses>321 courses</PlaceCourses>
-                </Place>
-              </Link>
+              <Place key={index}>
+                <Link
+                  key={index}
+                  href={`/getCourses?location=${place.id}`}
+                >
+                  <PlaceLink>{place.name}</PlaceLink>
+                </Link>
+                <PlaceCourses>321 courses</PlaceCourses>
+              </Place>
             )}
           </Places>
         </Wrapper>

@@ -28,6 +28,12 @@ export const Place = styled.div`
   font-size: 14px;
 `;
 
+
+export const PlaceLink = styled.a`
+  text-decoration: none;
+  cursor: pointer;
+`
+
 export const PlaceCourses = styled.span`
   color: #434656;
 `;
