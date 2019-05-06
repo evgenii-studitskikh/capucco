@@ -9,6 +9,7 @@ const Container = styled.div`
 
 const Locale = styled.img`
   cursor: pointer;
+  margin-top: 4px;
 `;
 
 const Dropdown = styled.div`

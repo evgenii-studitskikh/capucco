@@ -15,12 +15,12 @@ export default class Header extends React.Component {
   render() {    
     return (
       <Container>
-        <Link
-          href={`/`}
-        >
-          <Logo />
-        </Link>
         <Column>
+          <Link
+            href={`/`}
+          >
+            <Logo src='./static/images/logo.png'/>
+          </Link>
           <Link
             href={`/about`}
           >

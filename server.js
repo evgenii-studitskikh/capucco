@@ -27,7 +27,7 @@ app
         location: req.params.location,
         subject: req.params.subject
       }
-      
+
       app.render(req, res, actualPage, queryParams)
     })
 
