@@ -15,7 +15,7 @@ import {
   Wrapper,
 } from '../styled';
 import Course from './Course';
-import { loadFirebase } from '../../lib/db';
+import { loadFirebase } from '../../api/db';
 
 interface ISearchresultProps {
   router: any,

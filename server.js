@@ -11,8 +11,11 @@ app
   .prepare()
   .then(() => {
     const server = express()
+    const api = require('./api/queries')
 
     server.use(nextI18NextMiddleware(nextI18next))
+
+    server.get('/api/locations', api.getLocations);
 
     server.get('/', (req, res) => {
       const actualPage = '/'

@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import {
   Container,
@@ -9,7 +10,6 @@ import {
 import {
   ILocation,
 } from '../types';
-import { loadFirebase } from '../../../lib/db';
 
 interface ILocationProps {
   locationValue: ILocation,
@@ -54,32 +54,22 @@ export default class Location extends React.Component<ILocationProps, ILocationS
 
   public getLocationsByQuery = async(query: string) => {
 
-    const locationsData: any[] = [];
+    let locationsData: any[] = [];
 
-    await loadFirebase()
-    .firestore()
-    .collection('locations')
-    .orderBy('name')
-    .startAt(query)
-    .endAt(query+"\uf8ff")
-    .get()
-    .then((snapshot: any) => {
-      
-      snapshot.forEach((course: any) => {
+    axios.get('/api/locations')
+      .then((response) => {
 
-        locationsData.push({
-          id: course.id,
-          ...course.data()
-        });
+        locationsData = response.data || [];
       })
-    })
-    .catch((err) => {
-      console.error('Error getting courses', err);
-    })
-
-    this.setState({
-      data: query ? locationsData : []
-    })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      })
+      .finally(() => {
+        this.setState({
+          data: query ? locationsData : []
+        })
+      })
   }
 
   public handleInputKeyUp = (e: any) => {
