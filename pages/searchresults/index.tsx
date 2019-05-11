@@ -15,7 +15,6 @@ import {
   Wrapper,
 } from '../styled';
 import Course from './Course';
-import { loadFirebase } from '../../api/db';
 
 interface ISearchresultProps {
   router: any,
@@ -37,39 +36,8 @@ class Searchresult extends React.Component<ISearchresultProps> {
       : Number(query.location)
 
     // get courses data by location ID
-    await loadFirebase()
-    .firestore()
-    .collection('courses')
-    .where('location', '==', locationId)
-    .get()
-    .then((snapshot: any) => {
-      
-      snapshot.forEach((course: any) => {
-        coursesData.push({
-          id: course.id,
-          ...course.data()
-        });
-      })
-    })
-    .catch((err) => {
-      console.error('Error getting courses', err);
-    })
-
+    
     // get location data by its ID
-    await loadFirebase()
-    .firestore()
-    .collection('locations')
-    .where('id', '==', locationId)
-    .get()
-    .then((snapshot: any) => {
-      
-      snapshot.forEach((location: any) => {
-        locationData = location.data();
-      })
-    })
-    .catch((err) => {
-      console.error('Error getting location', err);
-    })
     
     return { 
       coursesData: coursesData,

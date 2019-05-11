@@ -15,7 +15,7 @@ app
 
     server.use(nextI18NextMiddleware(nextI18next))
 
-    server.get('/api/locations', api.getLocations);
+    server.get('/api/locationsearch', api.getLocationsBySubstring);
 
     server.get('/', (req, res) => {
       const actualPage = '/'

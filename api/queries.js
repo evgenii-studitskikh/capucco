@@ -9,13 +9,15 @@ const pool = new Pool({
   ssl: true
 })
 
-const getLocations = (request, response) => {
+const getLocationsBySubstring = (request, response) => {
+
+  const term = request.query.q.toLowerCase();
 
   pool.query(
-    'SELECT * FROM public.locations', 
+    `SELECT id, name FROM public.locations WHERE LOWER(name) LIKE '%${term}%'`,
     (error, results) => {
       if (error) {
-        throw error
+        console.error(error);
       }
       
       response.status(200).json(results.rows)
@@ -23,5 +25,5 @@ const getLocations = (request, response) => {
 }
 
 module.exports = {
-  getLocations,
+  getLocationsBySubstring,
 }

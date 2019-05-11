@@ -56,20 +56,28 @@ export default class Location extends React.Component<ILocationProps, ILocationS
 
     let locationsData: any[] = [];
 
-    axios.get('/api/locations')
-      .then((response) => {
+    if (query) {
+      axios.get(`/api/locationsearch?q=${query}`)
+        .then((response) => {
 
-        locationsData = response.data || [];
-      })
-      .catch((error) => {
-        // handle error
-        console.log(error);
-      })
-      .finally(() => {
-        this.setState({
-          data: query ? locationsData : []
+          locationsData = response.data || [];
         })
+        .catch((error) => {
+          // handle error
+          console.log(error);
+        })
+        .finally(() => {
+          this.setState({
+            data: locationsData
+          })
+        })
+    }
+    else {
+      this.setState({
+        data: []
       })
+    }
+    
   }
 
   public handleInputKeyUp = (e: any) => {
