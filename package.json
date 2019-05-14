@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start -p $PORT",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
