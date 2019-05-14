@@ -7,7 +7,7 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "next start -p $PORT",
-    "heroku-postbuild": "node server.js"
+    "heroku-postbuild": "next build node server.js"
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
   },
   "keywords": [],
   "author": "Evgenii Studitskikh",
-  "license": "BSD 3-Clause",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/likezninjaz/capucco/issues"
   },
