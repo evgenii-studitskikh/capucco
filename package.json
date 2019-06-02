@@ -7,7 +7,7 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "next start -p $PORT",
-    "heroku-postbuild": "next build node server.js"
+    "heroku-postbuild": "node server.js"
   },
   "repository": {
     "type": "git",
