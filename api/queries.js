@@ -24,6 +24,23 @@ const getLocationsBySubstring = (request, response) => {
   })
 }
 
+const getLocationData = (request, response) => {
+
+  const locationId = request.query.id
+
+  pool.query(
+    `SELECT id, name, description FROM public.locations WHERE id = ${locationId}`,
+    (error, results) => {
+      if (error) {
+        console.error(error);
+      }
+      
+      response.status(200).json(results.rows)
+  })
+}
+
+
 module.exports = {
   getLocationsBySubstring,
+  getLocationData
 }

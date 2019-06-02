@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
+import axios from 'axios';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -30,6 +31,7 @@ class Searchresult extends React.Component<ISearchresultProps> {
     let locationData: any = {
       name: ''
     };
+    let url = req && req.headers && req.headers.host ? 'http://'+req.headers.host : window.location.origin
 
     const locationId = req 
       ? Number(req.query.location)
@@ -38,6 +40,15 @@ class Searchresult extends React.Component<ISearchresultProps> {
     // get courses data by location ID
     
     // get location data by its ID
+    await axios.get(`${url}/api/locationdata?id=${locationId}`)
+      .then((response) => {
+
+        locationData = response.data[0]
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      })
     
     return { 
       coursesData: coursesData,

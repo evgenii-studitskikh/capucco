@@ -52,7 +52,7 @@ export default class Location extends React.Component<ILocationProps, ILocationS
     })
   }
 
-  public getLocationsByQuery = async(query: string) => {
+  public getLocationsByQuery = (query: string) => {
 
     let locationsData: any[] = [];
 

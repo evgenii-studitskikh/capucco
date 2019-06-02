@@ -16,6 +16,7 @@ app
     server.use(nextI18NextMiddleware(nextI18next))
 
     server.get('/api/locationsearch', api.getLocationsBySubstring);
+    server.get('/api/locationdata', api.getLocationData);
 
     server.get('/', (req, res) => {
       const actualPage = '/'
@@ -24,7 +25,7 @@ app
       app.render(req, res, actualPage, queryParams)
     })
 
-    server.get('/getCourses', (req, res) => {
+    server.get('/searchresults', (req, res) => {
       const actualPage = '/searchresults'
       const queryParams = { 
         location: req.params.location,
