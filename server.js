@@ -48,14 +48,14 @@ app
       return handle(req, res)
     })
 
-    server.listen(process.env.PORT || 5000)
-
-    // if (dev) {
-    //   server.listen(3000, err => {
-    //     if (err) throw err
-    //     console.log('> Ready on http://localhost:3000')
-    //   })
-    // }
+    if (dev) {
+      server.listen(3000, err => {
+        if (err) throw err
+        console.log('> Ready on http://localhost:3000')
+      })
+    } else {
+      server.listen(process.env.PORT || 5000)
+    }
   })
   .catch(ex => {
     console.error(ex.stack)
