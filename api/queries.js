@@ -20,7 +20,7 @@ const getLocationsBySubstring = (request, response) => {
         console.error(error);
       }
       
-      response.status(200).json(results.rows)
+      results && response.status(200).json(results.rows)
   })
 }
 
@@ -35,12 +35,28 @@ const getLocationData = (request, response) => {
         console.error(error);
       }
       
-      response.status(200).json(results.rows)
+      results && response.status(200).json(results.rows)
+  })
+}
+
+const getCoursesData = (request, response) => {
+
+  const locationId = request.query.location
+
+  pool.query(
+    `SELECT id, name, description, location, image, price FROM public.courses WHERE location = ${locationId}`,
+    (error, results) => {
+      if (error) {
+        console.error(error);
+      }
+      
+      results && response.status(200).json(results.rows)
   })
 }
 
 
 module.exports = {
   getLocationsBySubstring,
-  getLocationData
+  getLocationData,
+  getCoursesData
 }

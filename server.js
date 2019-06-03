@@ -17,6 +17,7 @@ app
 
     server.get('/api/locationsearch', api.getLocationsBySubstring);
     server.get('/api/locationdata', api.getLocationData);
+    server.get('/api/coursesdata', api.getCoursesData);
 
     server.get('/', (req, res) => {
       const actualPage = '/'

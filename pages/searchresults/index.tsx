@@ -38,6 +38,15 @@ class Searchresult extends React.Component<ISearchresultProps> {
       : Number(query.location)
 
     // get courses data by location ID
+    await axios.get(`${url}/api/coursesdata?location=${locationId}`)
+      .then((response) => {
+
+        coursesData = response.data
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      })
     
     // get location data by its ID
     await axios.get(`${url}/api/locationdata?id=${locationId}`)
