@@ -54,9 +54,24 @@ const getCoursesData = (request, response) => {
   })
 }
 
+const getCourseData = (request, response) => {
+
+  const courseId = request.query.id
+
+  pool.query(
+    `SELECT title, description, location, image, price FROM public.courses WHERE id = ${courseId}`,
+    (error, results) => {
+      if (error) {
+        console.error(error);
+      }
+      
+      results && response.status(200).json(results.rows)
+  })
+}
 
 module.exports = {
   getLocationsBySubstring,
   getLocationData,
-  getCoursesData
+  getCoursesData,
+  getCourseData
 }
