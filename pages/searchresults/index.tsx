@@ -28,9 +28,8 @@ class Searchresult extends React.Component<ISearchresultProps> {
   static async getInitialProps ({ req, query }: any) {
 
     let coursesData: any[] = [];
-    let locationData: any = {
-      name: ''
-    };
+    let locationData: any = {};
+    let isLocationDataEmpty: boolean = true;
     let url = req && req.headers && req.headers.host ? 'http://'+req.headers.host : window.location.origin
 
     const locationId = req 
@@ -52,7 +51,11 @@ class Searchresult extends React.Component<ISearchresultProps> {
     await axios.get(`${url}/api/locationdata?id=${locationId}`)
       .then((response) => {
 
-        locationData = response.data[0]
+        if (response.data[0]) {
+          locationData.name = response.data[0].name
+          locationData.description = response.data[0].description
+          isLocationDataEmpty = false;
+        }
       })
       .catch((error) => {
         // handle error
@@ -62,6 +65,7 @@ class Searchresult extends React.Component<ISearchresultProps> {
     return { 
       coursesData: coursesData,
       locationData: locationData,
+      isLocationDataEmpty: isLocationDataEmpty || false,
       namespacesRequired: ['common', 'search-form', 'footer']
     };
   }
@@ -71,6 +75,7 @@ class Searchresult extends React.Component<ISearchresultProps> {
     const {
       coursesData,
       locationData,
+      isLocationDataEmpty,
     } = this.props
 
     return (
@@ -87,24 +92,28 @@ class Searchresult extends React.Component<ISearchresultProps> {
         <Header />
         <Filter />
         <Wrapper>
-          <Title>Courses in {locationData.name}</Title>
+          {isLocationDataEmpty
+            ? <Title>Courses not found!</Title>
+            :
+              <React.Fragment>
+                <Title>Courses in {locationData.name}</Title>
 
-          {locationData.description &&
-            <Description>{locationData.description}</Description>
+                {locationData.description &&
+                  <Description>{locationData.description}</Description>
+                }
+
+                <Sorting>
+                  Sort by
+                </Sorting>
+
+                {coursesData.map((data: any, index: number) =>
+                  <Course 
+                    key={index}
+                    data={data}
+                  />
+                )}
+              </React.Fragment>
           }
-
-          {coursesData && coursesData.length > 0 &&
-            <Sorting>
-              Sort by
-            </Sorting>
-          }
-
-          {coursesData && coursesData.length > 0 && coursesData.map((data: any, index: number) =>
-            <Course 
-              key={index}
-              data={data}
-            />
-          )}
         </Wrapper>
         <Footer />
       </Container>
