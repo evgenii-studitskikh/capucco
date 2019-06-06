@@ -9,8 +9,14 @@ import {
   Wrapper
 } from '../styled';
 import {
+  Content,
+  Sidebar,
   Title,
   Description,
+  Cover,
+  CoverWrapper,
+  Miniatures,
+  Miniature
 } from './styled';
 
 interface ICourse {
@@ -66,8 +72,20 @@ class Course extends React.Component<ICourseProps> {
         </Head>
         <Header />
         <Wrapper>
-          <Title>{courseData.title}</Title>
-          <Description>{courseData.description}</Description>
+          <Content>
+            <Title>{courseData.title}</Title>
+            <Description>{courseData.description}</Description>
+            <CoverWrapper>
+              <Cover src='https://firebasestorage.googleapis.com/v0/b/capucco-1555146352613.appspot.com/o/courses%2F1%2Fsurfingsport.jpg?alt=media&token=febadae9-ad7b-4f67-a06f-bf8a8f3278a4'/>
+              <Miniatures>
+              <Miniature src='https://firebasestorage.googleapis.com/v0/b/capucco-1555146352613.appspot.com/o/courses%2F1%2Fsurfingsport.jpg?alt=media&token=febadae9-ad7b-4f67-a06f-bf8a8f3278a4' />
+                <Miniature src='https://firebasestorage.googleapis.com/v0/b/capucco-1555146352613.appspot.com/o/courses%2F1%2Fi.jpeg?alt=media&token=cc9a5374-bdbb-4e7e-9613-b4aaa1172652' />
+              </Miniatures>
+            </CoverWrapper>
+          </Content>
+          <Sidebar>
+            Sidebar here with actions and other things
+          </Sidebar>
         </Wrapper>
       </Container>
     )
