@@ -69,9 +69,25 @@ const getCourseData = (request, response) => {
   })
 }
 
+const getCourseImages = (request, response) => {
+
+  const courseId = request.query.id
+
+  pool.query(
+    `SELECT id, url, is_course_cover FROM public.images WHERE course_id = ${courseId}`,
+    (error, results) => {
+      if (error) {
+        console.error(error);
+      }
+      
+      results && response.status(200).json(results.rows)
+  })
+}
+
 module.exports = {
   getLocationsBySubstring,
   getLocationData,
   getCoursesData,
-  getCourseData
+  getCourseData,
+  getCourseImages,
 }

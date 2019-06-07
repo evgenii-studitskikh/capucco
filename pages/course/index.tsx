@@ -19,22 +19,38 @@ import {
   Miniature
 } from './styled';
 
+interface IImage {
+  id: number,
+  url: string,
+  isCover: boolean
+}
+
 interface ICourse {
   title: string,
-  description: string
+  description: string,
+  images: IImage[]
 }
 
 interface ICourseProps {
   courseData: ICourse,
 }
 
-class Course extends React.Component<ICourseProps> {
+interface ICourseState {
+  activeImage: number
+}
+
+class Course extends React.Component<ICourseProps, ICourseState> {
+
+  state = {
+    activeImage: 0
+  }
 
   static async getInitialProps ({ req, query }: any) {
 
-    let courseData: any = {
+    let courseData: ICourse = {
       title: '',
-      description: ''
+      description: '',
+      images: []
     };
     let url = req && req.headers && req.headers.host ? 'http://'+req.headers.host : window.location.origin
   
@@ -42,11 +58,22 @@ class Course extends React.Component<ICourseProps> {
       ? Number(req.query.id)
       : Number(query.id)
 
-    // get courses data by location ID
+    // get courses data by course ID
     await axios.get(`${url}/api/coursedata?id=${courseId}`)
       .then((response) => {
 
         courseData = {...response.data[0]};
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      })
+
+    // get courses images by course ID
+    await axios.get(`${url}/api/courseimages?id=${courseId}`)
+      .then((response) => {
+
+        courseData.images = response.data;
       })
       .catch((error) => {
         // handle error
@@ -59,11 +86,21 @@ class Course extends React.Component<ICourseProps> {
     };
   }
 
+  private handleMiniatureClick(index: number) {
+    this.setState({
+      activeImage: index
+    });
+  }
+
   render() {
 
     const {
       courseData
     } = this.props
+
+    const {
+      activeImage
+    } = this.state
 
     return (
       <Container>
@@ -75,13 +112,21 @@ class Course extends React.Component<ICourseProps> {
           <Content>
             <Title>{courseData.title}</Title>
             <Description>{courseData.description}</Description>
-            <CoverWrapper>
-              <Cover src='https://firebasestorage.googleapis.com/v0/b/capucco-1555146352613.appspot.com/o/courses%2F1%2Fsurfingsport.jpg?alt=media&token=febadae9-ad7b-4f67-a06f-bf8a8f3278a4'/>
-              <Miniatures>
-              <Miniature src='https://firebasestorage.googleapis.com/v0/b/capucco-1555146352613.appspot.com/o/courses%2F1%2Fsurfingsport.jpg?alt=media&token=febadae9-ad7b-4f67-a06f-bf8a8f3278a4' />
-                <Miniature src='https://firebasestorage.googleapis.com/v0/b/capucco-1555146352613.appspot.com/o/courses%2F1%2Fi.jpeg?alt=media&token=cc9a5374-bdbb-4e7e-9613-b4aaa1172652' />
-              </Miniatures>
-            </CoverWrapper>
+            {courseData.images.length &&
+              <CoverWrapper>
+                <Cover src={courseData.images[activeImage].url}/>
+                <Miniatures>
+                  {courseData.images.map((image: IImage, index: number) =>
+                    <Miniature
+                      key={image.id}
+                      src={image.url}
+                      onClick={() => this.handleMiniatureClick(index)}
+                      isActive={index === activeImage}
+                    />
+                  )}
+                </Miniatures>
+              </CoverWrapper>
+            }
           </Content>
           <Sidebar>
             Sidebar here with actions and other things

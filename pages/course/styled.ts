@@ -34,11 +34,15 @@ export const Cover = styled.img`
 export const Miniatures = styled.div`
   display: flex;
   margin-top: 10px;
+  margin-left: -3px;
 `;
 
-export const Miniature = styled.img`
+export const Miniature: any = styled.img`
+  position: relative;
   width: 150px;
   height: 100px;
   margin-right: 10px;
+  border: ${({ isActive }: any) => `3px solid ${isActive ? '#0666CC' : 'transparent'}`};
   object-fit: cover;
+  cursor: pointer;
 `;
