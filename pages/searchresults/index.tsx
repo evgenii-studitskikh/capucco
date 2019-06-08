@@ -21,6 +21,7 @@ interface ISearchresultProps {
   router: any,
   coursesData: any,
   locationData: any,
+  isLocationDataEmpty: boolean,
 }
 
 class Searchresult extends React.Component<ISearchresultProps> {

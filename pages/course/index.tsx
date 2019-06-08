@@ -4,6 +4,7 @@ import { withRouter } from 'next/router';
 import axios from 'axios';
 
 import Header from '../../components/Header';
+import Select from '../../components/Select';
 import {
   Container,
   Wrapper
@@ -16,7 +17,9 @@ import {
   Cover,
   CoverWrapper,
   Miniatures,
-  Miniature
+  Miniature,
+  BookingForm,
+  Field
 } from './styled';
 
 interface IImage {
@@ -120,7 +123,7 @@ class Course extends React.Component<ICourseProps, ICourseState> {
                     <Miniature
                       key={image.id}
                       src={image.url}
-                      onClick={() => this.handleMiniatureClick(index)}
+                      onMouseEnter={() => this.handleMiniatureClick(index)}
                       isActive={index === activeImage}
                     />
                   )}
@@ -129,7 +132,20 @@ class Course extends React.Component<ICourseProps, ICourseState> {
             }
           </Content>
           <Sidebar>
-            Sidebar here with actions and other things
+            <BookingForm>
+              <Field>
+                <Select
+                  label='Date'
+                  data={[{label: 'label-1', value: 'value1'}, {label: 'label-2', value: 'value2'}]}
+                />
+              </Field>
+              <Field>
+                <Select
+                  label='Persons'
+                  data={[{label: 'label-1', value: 'value1'}, {label: 'label-2', value: 'value2'}]}
+                />
+              </Field>
+            </BookingForm>
           </Sidebar>
         </Wrapper>
       </Container>
