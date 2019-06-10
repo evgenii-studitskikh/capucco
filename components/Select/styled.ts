@@ -49,4 +49,8 @@ export const Item = styled.li`
   padding: 10px;
   list-style: none;
   cursor: pointer;
+
+  &:hover {
+    background: rgba(0,0,0,0.15);
+  }
 `;

@@ -4,7 +4,9 @@ import { withRouter } from 'next/router';
 import axios from 'axios';
 
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import Select from '../../components/Select';
+import { Map } from '../../components/Map';
 import {
   Container,
   Wrapper
@@ -19,7 +21,10 @@ import {
   Miniatures,
   Miniature,
   BookingForm,
-  Field
+  Field,
+  BookButton,
+  Price,
+  MapContainer,
 } from './styled';
 
 interface IImage {
@@ -31,7 +36,8 @@ interface IImage {
 interface ICourse {
   title: string,
   description: string,
-  images: IImage[]
+  images: IImage[],
+  price: number
 }
 
 interface ICourseProps {
@@ -51,6 +57,7 @@ class Course extends React.Component<ICourseProps, ICourseState> {
   static async getInitialProps ({ req, query }: any) {
 
     let courseData: ICourse = {
+      price: 0,
       title: '',
       description: '',
       images: []
@@ -114,6 +121,7 @@ class Course extends React.Component<ICourseProps, ICourseState> {
         <Wrapper>
           <Content>
             <Title>{courseData.title}</Title>
+            5825 Sunset Blvd, Hollywood, Los Angeles, CA 90028, United States of America
             <Description>{courseData.description}</Description>
             {courseData.images.length &&
               <CoverWrapper>
@@ -130,9 +138,12 @@ class Course extends React.Component<ICourseProps, ICourseState> {
                 </Miniatures>
               </CoverWrapper>
             }
+            key things
+            reviews 
           </Content>
           <Sidebar>
             <BookingForm>
+              <Price>$ {courseData.price}</Price>
               <Field>
                 <Select
                   label='Date'
@@ -145,9 +156,19 @@ class Course extends React.Component<ICourseProps, ICourseState> {
                   data={[{label: 'label-1', value: 'value1'}, {label: 'label-2', value: 'value2'}]}
                 />
               </Field>
+              Total: $ 999
+              <BookButton>Checkout</BookButton>
             </BookingForm>
+            <MapContainer>
+              <Map
+                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
+                containerElement={<div style={{ height: `400px` }} />}
+                mapElement={<div style={{ height: `100%` }} />}
+              />
+            </MapContainer>
           </Sidebar>
         </Wrapper>
+        <Footer />
       </Container>
     )
   }

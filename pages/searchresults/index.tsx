@@ -104,7 +104,7 @@ class Searchresult extends React.Component<ISearchresultProps> {
                 }
 
                 <Sorting>
-                  Sort by
+                  Sort by -next date   -price  -rathing
                 </Sorting>
 
                 {coursesData.map((data: any, index: number) =>

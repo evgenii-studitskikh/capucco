@@ -41,6 +41,7 @@ export default class Course extends React.Component<ICourseProps> {
           </ImageContainer>
           <InfoFields>
             <Title>{title}</Title>
+            5825 Sunset Blvd, Hollywood, Los Angeles, CA 90028, United States of America
             <Description>{description}</Description>
             <Options>
               {options && options.length > 0 && options.map((option: string, index: number) =>
@@ -51,10 +52,11 @@ export default class Course extends React.Component<ICourseProps> {
         </Info>
         <Actions>
           <Price>$ {price}</Price>
+          1 day 6 hours before next course!
           <Link
             href={`/course?id=${id}`}
           >
-            <Book>Book</Book>
+            <Book>Check Availability</Book>
           </Link>
         </Actions>
       </Container>

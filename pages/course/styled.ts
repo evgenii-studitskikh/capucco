@@ -51,10 +51,31 @@ export const Miniature: any = styled.img`
 `;
 
 export const BookingForm = styled.div`
-  padding: 10px;
   border-radius: 2px;
+`;
+
+export const Price = styled.span`
+  font-size: 24px;
+  font-weight: bold;
 `;
 
 export const Field = styled.div`
   margin-top: 10px;
+`;
+
+export const BookButton = styled.button`
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 2px;
+  background: #0666CC;
+  font-size: 14px;
+  color: #FFFFFF;
+  cursor: pointer;
+  outline: none;
+`;
+
+export const MapContainer = styled.div`
+  margin-top: 20px;
 `;
