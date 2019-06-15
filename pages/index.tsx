@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
+import axios from 'axios'
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -24,16 +25,42 @@ const SearchContainer = styled.div`
   background: rgba(0, 0, 0, 0.5);
 `;
 
-export default class extends React.Component {
+interface IProps {
+  popularPlacesData: any[],
+  namespacesRequired: string[]
+}
 
-  static getInitialProps() {
+export default class extends React.Component<IProps> {
+
+  static async getInitialProps({ req, query }: any) {
+
+    let popularPlacesData: any[] = []
+    const url = req && req.headers && req.headers.host ? 'http://'+req.headers.host : window.location.origin
+
+    // get popular locations data
+    await axios.get(`${url}/api/popularlocations`)
+      .then((response) => {
+
+        popularPlacesData = response.data
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      })
+    
 
     return {
+      popularPlacesData: popularPlacesData,
       namespacesRequired: ['common', 'search-form', 'footer']
     }
   }
 
   render() {    
+
+    const {
+      popularPlacesData
+    } = this.props
+
     return (
       <Container>
         <Head>
@@ -44,7 +71,7 @@ export default class extends React.Component {
           <SearchForm />
         </SearchContainer>
         <FeaturedCourses />
-        <PopularPlaces />
+        <PopularPlaces data={popularPlacesData}/>
         <Footer />
       </Container>
     )

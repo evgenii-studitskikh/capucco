@@ -84,10 +84,24 @@ const getCourseImages = (request, response) => {
   })
 }
 
+const getPopularLocationsData = (request, response) => {
+
+  pool.query(
+    `SELECT id, name, courses_count FROM locations WHERE is_popular = true`,
+    (error, results) => {
+      if (error) {
+        console.error(error);
+      }
+      
+      results && response.status(200).json(results.rows)
+  })
+}
+
 module.exports = {
   getLocationsBySubstring,
   getLocationData,
   getCoursesData,
   getCourseData,
   getCourseImages,
+  getPopularLocationsData,
 }

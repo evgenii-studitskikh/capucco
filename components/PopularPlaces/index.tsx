@@ -11,87 +11,36 @@ import {
   PlaceLink,
 } from './styled'
 
-export default class PopularPlaces extends React.Component {
+interface IPlace {
+  id: number,
+  name: string,
+  courses_count: number
+}
 
-  public state = {
-    data: [
-      {
-        id: 1,
-        name: "New York"
-      },
-      {
-        id: 1,
-        name: "New York"
-      },
-      {
-        id: 1,
-        name: "New York"
-      },
-      {
-        id: 1,
-        name: "New York"
-      },
-      {
-        id: 1,
-        name: "New York"
-      },
-      {
-        id: 1,
-        name: "New York"
-      },
-      {
-        id: 1,
-        name: "New York"
-      },
-      {
-        id: 1,
-        name: "New York"
-      },
-      {
-        id: 1,
-        name: "New York"
-      },
-      {
-        id: 1,
-        name: "New York"
-      },
-      {
-        id: 1,
-        name: "New York"
-      },
-      {
-        id: 1,
-        name: "New York"
-      },
-      {
-        id: 1,
-        name: "New York"
-      },
-      {
-        id: 1,
-        name: "New York"
-      }
-    ]
-  }
-  
+interface IPopularPlacesProps {
+  data: IPlace[]
+}
+
+export default class PopularPlaces extends React.Component<IPopularPlacesProps> {
+
   render() {
 
-    const { data } = this.state;
+    const { data } = this.props;
 
     return (
       <Container>
         <Wrapper>
           <Header>Popular destinations for learning the new</Header>
           <Places>
-            {data.map((place: any, index: number) =>
+            {data.map((place: IPlace, index: number) =>
               <Place key={index}>
                 <Link
                   key={index}
-                  href={`/getCourses?location=${place.id}`}
+                  href={`/searchresults?location=${place.id}`}
                 >
                   <PlaceLink>{place.name}</PlaceLink>
                 </Link>
-                <PlaceCourses>321 courses</PlaceCourses>
+                <PlaceCourses>{place.courses_count} courses</PlaceCourses>
               </Place>
             )}
           </Places>

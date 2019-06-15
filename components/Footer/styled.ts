@@ -12,4 +12,6 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   width: 1132px;
+  margin-top: 10px;
+  text-align: center;
 `;

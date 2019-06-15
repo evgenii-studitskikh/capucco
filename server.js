@@ -20,6 +20,7 @@ app
     server.get('/api/coursesdata', api.getCoursesData);
     server.get('/api/coursedata', api.getCourseData);
     server.get('/api/courseimages', api.getCourseImages);
+    server.get('/api/popularlocations', api.getPopularLocationsData);
 
     server.get('/', (req, res) => {
       const actualPage = '/'
