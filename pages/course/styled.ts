@@ -20,6 +20,11 @@ export const Title = styled.h1`
   font-size: 24px;
 `;
 
+export const Address = styled.p`
+  margin: 0;
+  font-size: 13px;
+`;
+
 export const Description = styled.p`
   font-size: 14px;
 `;
@@ -71,6 +76,7 @@ export const BookButton = styled.button`
   border-radius: 2px;
   background: #0666CC;
   font-size: 14px;
+  text-transform: uppercase;
   color: #FFFFFF;
   cursor: pointer;
   outline: none;

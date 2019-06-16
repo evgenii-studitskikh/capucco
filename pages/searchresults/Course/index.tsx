@@ -8,6 +8,7 @@ import {
   Info,
   InfoFields,
   Title,
+  Address,
   Description,
   Options,
   Option,
@@ -30,18 +31,23 @@ export default class Course extends React.Component<ICourseProps> {
       title,
       description,
       price,
-      options
+      options,
+      address,
     } = this.props.data;
 
     return (
       <Container>
         <Info>
-          <ImageContainer>
-            <Image src={image} />
-          </ImageContainer>
+          <Link href={`/course?id=${id}`}>
+            <ImageContainer>
+              <Image src={image} />
+            </ImageContainer>
+          </Link>
           <InfoFields>
-            <Title>{title}</Title>
-            5825 Sunset Blvd, Hollywood, Los Angeles, CA 90028, United States of America
+            <Link href={`/course?id=${id}`}>
+              <Title>{title}</Title>
+            </Link>
+            <Address>{address}</Address>
             <Description>{description}</Description>
             <Options>
               {options && options.length > 0 && options.map((option: string, index: number) =>
@@ -53,9 +59,7 @@ export default class Course extends React.Component<ICourseProps> {
         <Actions>
           <Price>$ {price}</Price>
           1 day 6 hours before next course!
-          <Link
-            href={`/course?id=${id}`}
-          >
+          <Link href={`/course?id=${id}`}>
             <Book>Check Availability</Book>
           </Link>
         </Actions>

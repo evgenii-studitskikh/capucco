@@ -15,6 +15,7 @@ import {
   Content,
   Sidebar,
   Title,
+  Address,
   Description,
   Cover,
   CoverWrapper,
@@ -35,9 +36,11 @@ interface IImage {
 
 interface ICourse {
   title: string,
+  address: string,
   description: string,
   images: IImage[],
-  price: number
+  price: number,
+  availability: string[]
 }
 
 interface ICourseProps {
@@ -59,7 +62,9 @@ class Course extends React.Component<ICourseProps, ICourseState> {
     let courseData: ICourse = {
       price: 0,
       title: '',
+      address: '',
       description: '',
+      availability: [],
       images: []
     };
     let url = req && req.headers && req.headers.host ? 'http://'+req.headers.host : window.location.origin
@@ -105,8 +110,13 @@ class Course extends React.Component<ICourseProps, ICourseState> {
   render() {
 
     const {
-      courseData
-    } = this.props
+      title,
+      description,
+      images,
+      price,
+      address,
+      availability,
+    } = this.props.courseData
 
     const {
       activeImage
@@ -115,19 +125,19 @@ class Course extends React.Component<ICourseProps, ICourseState> {
     return (
       <Container>
         <Head>
-          <title>Capucco: Learn anything and anywhere</title>
+          <title>{title} - Capucco</title>
         </Head>
         <Header />
         <Wrapper>
           <Content>
-            <Title>{courseData.title}</Title>
-            5825 Sunset Blvd, Hollywood, Los Angeles, CA 90028, United States of America
-            <Description>{courseData.description}</Description>
-            {courseData.images.length &&
+            <Title>{title}</Title>
+            <Address>{address}</Address>
+            <Description>{description}</Description>
+            {images.length &&
               <CoverWrapper>
-                <Cover src={courseData.images[activeImage].url}/>
+                <Cover src={images[activeImage].url}/>
                 <Miniatures>
-                  {courseData.images.map((image: IImage, index: number) =>
+                  {images.map((image: IImage, index: number) =>
                     <Miniature
                       key={image.id}
                       src={image.url}
@@ -143,20 +153,25 @@ class Course extends React.Component<ICourseProps, ICourseState> {
           </Content>
           <Sidebar>
             <BookingForm>
-              <Price>$ {courseData.price}</Price>
+              <Price>$ {price}</Price>
               <Field>
                 <Select
                   label='Date'
-                  data={[{label: 'label-1', value: 'value1'}, {label: 'label-2', value: 'value2'}]}
+                  data={availability.map(date => {
+                    return({
+                      label: date, 
+                      value: date
+                    })
+                  })}
                 />
               </Field>
               <Field>
                 <Select
                   label='Persons'
-                  data={[{label: 'label-1', value: 'value1'}, {label: 'label-2', value: 'value2'}]}
+                  data={[{label: '1 Person', value: '1'}, {label: '2 Persons', value: '2'}]}
                 />
               </Field>
-              Total: $ 999
+              Total: $ {price * 2}
               <BookButton>Checkout</BookButton>
             </BookingForm>
             <MapContainer>

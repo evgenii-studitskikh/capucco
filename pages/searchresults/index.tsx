@@ -82,7 +82,7 @@ class Searchresult extends React.Component<ISearchresultProps> {
     return (
       <Container>
         <Head>
-          <title>Capucco: Learn anything and anywhere</title>
+          <title>Capucco: Courses in {locationData.name}</title>
         </Head>
         <style>{`
           body { 
@@ -107,10 +107,10 @@ class Searchresult extends React.Component<ISearchresultProps> {
                   Sort by -next date   -price  -rathing
                 </Sorting>
 
-                {coursesData.map((data: any, index: number) =>
+                {coursesData.map((courseData: any, index: number) =>
                   <Course 
                     key={index}
-                    data={data}
+                    data={courseData}
                   />
                 )}
               </React.Fragment>

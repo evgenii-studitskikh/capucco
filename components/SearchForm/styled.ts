@@ -18,9 +18,10 @@ export const Form = styled.div`
 `;
 
 export const ApplyButton = styled.button`
-  width: 100px;
+  width: 150px;
   margin-left: 6px;
   font-size: 16px;
+  text-transform: uppercase;
   background: #0666CC;
   color: #FFFFFF;
   border: none;
