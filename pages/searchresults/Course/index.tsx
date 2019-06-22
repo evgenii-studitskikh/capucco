@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import ReactSVG from 'react-svg';
 
 import {
   Container,
@@ -15,6 +16,7 @@ import {
   Actions,
   Price,
   Book,
+  Like,
 } from './styled';
 
 interface ICourseProps {
@@ -62,6 +64,13 @@ export default class Course extends React.Component<ICourseProps> {
           <Link href={`/course?id=${id}`}>
             <Book>Check Availability</Book>
           </Link>
+          <Like>
+            145 Users liked it
+            <ReactSVG
+              className='SVG-like'
+              src={'./static/images/like.svg'}
+            />
+          </Like>
         </Actions>
       </Container>
     )

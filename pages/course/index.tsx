@@ -148,7 +148,7 @@ class Course extends React.Component<ICourseProps, ICourseState> {
                 </Miniatures>
               </CoverWrapper>
             }
-            key things
+            What you'll learn
             reviews 
           </Content>
           <Sidebar>

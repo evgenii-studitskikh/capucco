@@ -9,12 +9,11 @@ export const Container = styled.div`
   border-radius: 2px;
   box-shadow: 0px 3px 5px 0 rgba(174,174,174,0.5);
   margin-top: 20px;
-  transition: all 0.2s;
+  transition: all 0.3s;
 
   &:hover {
-    transition: all 0.2s;
-    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.5);
-    transform: scale(1.01);
+    transition: all 0.3s;
+    box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.5);
   }
 `;
 
@@ -63,6 +62,7 @@ export const Actions = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   min-width: 200px;
   margin-left: 10px;
 `;
@@ -98,4 +98,33 @@ export const Book = styled.button`
   color: #FFFFFF;
   cursor: pointer;
   outline: none;
+`;
+
+export const Like = styled.div`
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-weight: bold;
+  cursor: pointer;
+
+  .injected-svg {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    color: #434656;
+  }
+
+  path {
+    fill: #434656;
+    transition: .3s ease-in-out;
+  }
+
+  &:hover {
+    path {
+      fill: #0666CC;
+      transition: .3s ease-in-out;
+    }
+  }
 `;
