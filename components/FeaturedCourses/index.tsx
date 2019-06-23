@@ -28,32 +28,32 @@ export default class FeaturedCourses extends React.Component<any, IFeaturedCours
   public state = {
     data: [
       {
-        title: 'Climbing on Everest',
+        title: '10 days express workout with Kim',
         description: 'Blab lasld lasdl asld asl d',
         location: 10,
         subject: 44,
-        background: 'https://images.unsplash.com/photo-1524281423221-234569bc0438?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'
+        background: 'https://www.bostonmagazine.com/wp-content/uploads/sites/2/2018/12/at-home-workout.jpg'
       },
       {
-        title: 'Python courses in Berlin',
+        title: 'Pick-up Training Vilnius',
         description: 'Blab lasld lasdl asld asl d',
         location: 10,
         subject: 44,
-        background: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'
+        background: 'https://alphamantraining.com/wp-content/uploads/2016/08/PUA-training-in-Vilnius-Lithuania-Pick-up-Artist-Daygame-Nightgame-Approach.jpg'
       },
       {
-        title: 'Kayaking in Phuket',
+        title: 'The Money Course: Budgeting and Money Education',
         description: 'Blab lasld lasdl asld asl d',
         location: 10,
         subject: 44,
-        background: 'https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+        background: 'https://i.ytimg.com/vi/sfKdw2obrE0/maxresdefault.jpg'
       },
       {
         title: 'Pizza cooking in Roma',
         description: 'Blab lasld lasdl asld asl d',
         location: 10,
         subject: 44,
-        background: 'https://images.unsplash.com/photo-1512746804203-e53e69406f93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+        background: 'https://www.gustotv.com/wp-content/uploads/2017/06/Eight-stellar-cooking-courses-worth-booking-whole-vacation-around.jpg'
       },
       {
         title: 'Python courses',

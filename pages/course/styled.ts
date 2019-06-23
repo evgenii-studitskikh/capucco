@@ -22,6 +22,7 @@ export const Title = styled.h1`
 
 export const Address = styled.p`
   margin: 0;
+  color: #434656;
   font-size: 13px;
 `;
 
@@ -84,4 +85,35 @@ export const BookButton = styled.button`
 
 export const MapContainer = styled.div`
   margin-top: 20px;
+`;
+
+export const WhatYouLearn = styled.div`
+  width: 100%;
+  margin-left: -15px;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+`;
+
+
+export const WhatYouLearnHeader = styled.div`
+  font-size: 20px;
+`;
+
+export const WhatYouLearnList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-top: 20px;
+  padding: 0;
+`;
+
+export const WhatYouLearnItem = styled.li`
+  width: calc(45% - 20px);
+  margin-bottom: 15px;
+  padding-right: 5%;
+  padding-left: 20px;
+  font-size: 14px;
+  background: url('./static/images/award.svg') 0 3px no-repeat;
+  background-size: 15px;
 `;

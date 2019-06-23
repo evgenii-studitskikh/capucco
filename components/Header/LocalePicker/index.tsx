@@ -5,18 +5,36 @@ import { i18n, withNamespaces } from '../../../i18n';
 
 const Container = styled.div`
   position: relative;
+  margin-top: 5px;
 `;
 
-const Locale = styled.img`
+const Locale = styled.div`
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin-top: 20px;
   cursor: pointer;
-  margin-top: 4px;
+`;
+
+const LocaleImage = styled.img`
+  width: 30px;
+  height: 15px;
+  cursor: pointer;
+`;
+
+
+const LocaleName = styled.div`
+  margin-right: 10px;
 `;
 
 const Dropdown = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   position: absolute;
   top: 30px;
   right: 0;
-  padding: 10px;
+  width: 220px;
+  padding: 0 20px 20px;
   border-radius: 2px;
   background: #FFFFFF;
   box-shadow: 0px 3px 5px 0 rgba(174,174,174,0.5);
@@ -30,6 +48,17 @@ class LocalePicker extends React.Component<any, ILocalePickerState> {
 
   public state = {
     isDropDownOpen: false
+  }
+
+  private getLanguageName = (lang: string) => {
+    switch (lang) {
+      case 'en':
+        return 'English'
+      case 'de':
+        return 'Deutsch'
+      case 'ru':
+        return 'Русский'
+    }
   }
 
   public handleLocaleClick = (lang?: string) => {
@@ -53,8 +82,7 @@ class LocalePicker extends React.Component<any, ILocalePickerState> {
 
     return (
       <Container>
-        <Locale
-          width='30px' 
+        <LocaleImage
           src={`../static/icons/flags/${i18n.language}.png`}
           onClick={() => this.handleLocaleClick()}
         />
@@ -63,10 +91,13 @@ class LocalePicker extends React.Component<any, ILocalePickerState> {
             {i18n.options.allLanguages.map((lang: string) =>
               <Locale
                 key={lang}
-                width='30px' 
-                src={`../static/icons/flags/${lang}.png`}
                 onClick={() => this.handleLocaleClick(lang)}
-              />
+              >
+                <LocaleName>{this.getLanguageName(lang)}</LocaleName>
+                <LocaleImage
+                  src={`../static/icons/flags/${lang}.png`}
+                />
+              </Locale>
             )}
           </Dropdown>
         }

@@ -26,6 +26,10 @@ import {
   BookButton,
   Price,
   MapContainer,
+  WhatYouLearn,
+  WhatYouLearnHeader,
+  WhatYouLearnList,
+  WhatYouLearnItem,
 } from './styled';
 
 interface IImage {
@@ -40,7 +44,8 @@ interface ICourse {
   description: string,
   images: IImage[],
   price: number,
-  availability: string[]
+  availability: string[],
+  objectives: string[]
 }
 
 interface ICourseProps {
@@ -65,7 +70,8 @@ class Course extends React.Component<ICourseProps, ICourseState> {
       address: '',
       description: '',
       availability: [],
-      images: []
+      images: [],
+      objectives: [],
     };
     let url = req && req.headers && req.headers.host ? 'http://'+req.headers.host : window.location.origin
   
@@ -116,6 +122,7 @@ class Course extends React.Component<ICourseProps, ICourseState> {
       price,
       address,
       availability,
+      objectives,
     } = this.props.courseData
 
     const {
@@ -148,7 +155,16 @@ class Course extends React.Component<ICourseProps, ICourseState> {
                 </Miniatures>
               </CoverWrapper>
             }
-            What you'll learn
+            {objectives.length &&
+              <WhatYouLearn>
+                <WhatYouLearnHeader>What you'll learn</WhatYouLearnHeader>
+                <WhatYouLearnList>
+                  {objectives.map((objective: string, index: number) =>
+                    <WhatYouLearnItem key={index}>{objective}</WhatYouLearnItem>
+                  )}
+                </WhatYouLearnList>
+              </WhatYouLearn>
+            }
             reviews 
           </Content>
           <Sidebar>
