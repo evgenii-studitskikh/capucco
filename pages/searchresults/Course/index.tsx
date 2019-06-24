@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import ReactSVG from 'react-svg';
+import moment from 'moment';
 
 import {
   Container,
@@ -17,6 +18,7 @@ import {
   Price,
   Book,
   Like,
+  Availability,
 } from './styled';
 
 interface ICourseProps {
@@ -35,6 +37,7 @@ export default class Course extends React.Component<ICourseProps> {
       price,
       options,
       address,
+      availability,
     } = this.props.data;
 
     return (
@@ -60,7 +63,11 @@ export default class Course extends React.Component<ICourseProps> {
         </Info>
         <Actions>
           <Price>$ {price}</Price>
-          1 day 6 hours before next course!
+          {availability && availability.length &&
+            <Availability>
+              {`Next course will start ${moment(availability[0], 'DD/MM/YYYY').fromNow()}`}
+            </Availability>
+          }
           <Link href={`/course?id=${id}`}>
             <Book>Check Availability</Book>
           </Link>

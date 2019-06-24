@@ -68,7 +68,7 @@ export const Actions = styled.div`
 `;
 
 export const Price = styled.span`
-  margin: 10px 0;
+  margin-top: 10px;
   font-size: 18px;
 `;
 
@@ -90,6 +90,7 @@ export const Option = styled.li`
 export const Book = styled.button`
   width: 100%;
   height: 40px;
+  margin-top: 10px;
   border: none;
   border-radius: 2px;
   background: #0666CC;
@@ -127,4 +128,9 @@ export const Like = styled.div`
       transition: .3s ease-in-out;
     }
   }
+`;
+
+export const Availability = styled.div`
+  margin-top: 5px;
+  text-transform: lowercase;
 `;

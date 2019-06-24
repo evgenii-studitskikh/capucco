@@ -165,7 +165,7 @@ class Course extends React.Component<ICourseProps, ICourseState> {
                 </WhatYouLearnList>
               </WhatYouLearn>
             }
-            reviews 
+            reviews, related courses
           </Content>
           <Sidebar>
             <BookingForm>

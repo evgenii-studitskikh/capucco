@@ -56,11 +56,11 @@ export default class FeaturedCourses extends React.Component<any, IFeaturedCours
         background: 'https://www.gustotv.com/wp-content/uploads/2017/06/Eight-stellar-cooking-courses-worth-booking-whole-vacation-around.jpg'
       },
       {
-        title: 'Python courses',
+        title: 'Learn to Fly a Helicopter',
         description: 'Blab lasld lasdl asld asl d',
         location: 10,
         subject: 44,
-        background: 'https://images.unsplash.com/photo-1513883583436-c8bbfbc3b215?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1055&q=80'
+        background: 'https://www.heliair.com/wp-content/uploads/2016/10/Learn-to-Fly-a-Helicopter-and-Become-a-Pilot-Helicopter-Pilot-Training-with-Heli-Air.jpg'
       },
     ]
   }

@@ -44,7 +44,7 @@ const getCoursesData = (request, response) => {
   const locationId = request.query.location
 
   pool.query(
-    `SELECT id, title, description, location, image, price, address, options FROM public.courses WHERE location = ${locationId} ORDER BY title ASC`,
+    `SELECT id, title, description, location, image, price, address, options, availability FROM public.courses WHERE location = ${locationId} ORDER BY title ASC`,
     (error, results) => {
       if (error) {
         console.error(error);
