@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import { withRouter } from 'next/router';
 import axios from 'axios';
 
@@ -188,7 +189,9 @@ class Course extends React.Component<ICourseProps, ICourseState> {
                 />
               </Field>
               Total: $ {price * 2}
-              <BookButton>Checkout</BookButton>
+              <Link href={`/checkout`}>
+                <BookButton>Checkout</BookButton>
+              </Link>
             </BookingForm>
             <MapContainer>
               <Map

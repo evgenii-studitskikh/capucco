@@ -20,7 +20,7 @@ class Checkout extends React.Component {
     return (
       <Container>
         <Head>
-          <title>Capucco: checkout</title>
+          <title>Capucco: Checkout your course!</title>
         </Head>
         <Header />
         <Wrapper>
