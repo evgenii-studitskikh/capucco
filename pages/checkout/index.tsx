@@ -4,13 +4,16 @@ import { withRouter } from 'next/router';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Input from '../../components/Input';
 
 import {
   Container,
-  Wrapper
+  Wrapper,
 } from '../styled';
 import {
-  Content
+  Content,
+  Title,
+  Form,
 } from './styled';
 
 class Checkout extends React.Component {
@@ -25,7 +28,21 @@ class Checkout extends React.Component {
         <Header />
         <Wrapper>
           <Content>
-            Details form
+            <Title>It's almost yours! We just need a few more details.</Title>
+            <Form>
+              <Input
+                label='First Name'
+              />
+              <Input
+                label='Last Name'
+              />
+              <Input
+                label='Email'
+              />
+              <Input
+                label='Phone'
+              />
+            </Form>
           </Content>
         </Wrapper>
         <Footer />
