@@ -12,6 +12,7 @@ app
   .then(() => {
     const server = express()
     const api = require('./api/queries')
+    const mails = require('./api/mails')
 
     server.use(nextI18NextMiddleware(nextI18next))
 
@@ -21,6 +22,8 @@ app
     server.get('/api/coursedata', api.getCourseData);
     server.get('/api/courseimages', api.getCourseImages);
     server.get('/api/popularlocations', api.getPopularLocationsData);
+
+    server.get('/mails/successfulbooking', mails.successfulBooking);
 
     server.get('/', (req, res) => {
       const actualPage = '/'

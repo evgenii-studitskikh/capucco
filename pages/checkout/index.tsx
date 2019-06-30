@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
+import axios from 'axios';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -17,6 +18,19 @@ import {
 } from './styled';
 
 class Checkout extends React.Component {
+
+  private handleSend = () => {
+    let url = window.location.origin
+    axios.get(`${url}/mails/successfulbooking`)
+      .then((response) => {
+
+        console.log(response)
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      })
+  }
 
   render() {
 
@@ -42,6 +56,9 @@ class Checkout extends React.Component {
               <Input
                 label='Phone'
               />
+              <div onClick={this.handleSend}>
+                Send
+              </div>
             </Form>
           </Content>
         </Wrapper>
