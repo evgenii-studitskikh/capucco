@@ -10,4 +10,8 @@ export const Title = styled.h1`
   font-size: 24px;
 `;
 
-export const Form = styled.form``;
+export const Form = styled.div``;
+
+export const Submit = styled.button`
+
+`;

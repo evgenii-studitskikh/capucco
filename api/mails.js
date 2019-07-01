@@ -1,17 +1,22 @@
-var domain = 'sandbox49f6b016c31e47edb6f20ddfc9c43c65.mailgun.org';
-var mailgun = require('mailgun-js')({
+const mailgun = require('mailgun-js')({
   apiKey: process.env.MAILGUN_KEY, 
-  domain: domain
+  domain: process.env.MAILGUN_DOMAIN
 });
- 
-var data = {
-  from: 'Excited User <me@samples.mailgun.org>',
-  to: 'estrueall@gmail.com',
-  subject: 'Hello',
-  text: 'Testing some Mailgun awesomeness!'
-};
- 
+  
 const successfulBooking = (request, response) => {
+
+  const {
+    firstName,
+    email,
+  } = request.body;
+
+  const data = {
+    from: 'Capucco <noreply@capucco.com>',
+    to: email,
+    subject: 'Hello',
+    text: `Dear ${firstName}, thanks for using Capucco!`
+  };
+  
   mailgun.messages().send(data, function (error, body) {
     console.log(body);
   });

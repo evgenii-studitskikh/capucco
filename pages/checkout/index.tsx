@@ -15,13 +15,17 @@ import {
   Content,
   Title,
   Form,
+  Submit,
 } from './styled';
 
 class Checkout extends React.Component {
 
   private handleSend = () => {
     let url = window.location.origin
-    axios.get(`${url}/mails/successfulbooking`)
+    axios.post(`${url}/mails/successfulbooking`, {
+        firstName: 'Fred', //change to input values
+        email: 'estrueall@gmail.com' //change to input values
+      })
       .then((response) => {
 
         console.log(response)
@@ -56,9 +60,9 @@ class Checkout extends React.Component {
               <Input
                 label='Phone'
               />
-              <div onClick={this.handleSend}>
-                Send
-              </div>
+              <Submit onClick={this.handleSend}>
+                Submit
+              </Submit>
             </Form>
           </Content>
         </Wrapper>

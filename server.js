@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const next = require('next')
 const nextI18NextMiddleware = require('next-i18next/middleware')
 const nextI18next = require('./i18n')
@@ -15,6 +16,8 @@ app
     const mails = require('./api/mails')
 
     server.use(nextI18NextMiddleware(nextI18next))
+    server.use(bodyParser.urlencoded({ extended: false }))
+    server.use(bodyParser.json())
 
     server.get('/api/locationsearch', api.getLocationsBySubstring);
     server.get('/api/locationdata', api.getLocationData);
@@ -23,7 +26,7 @@ app
     server.get('/api/courseimages', api.getCourseImages);
     server.get('/api/popularlocations', api.getPopularLocationsData);
 
-    server.get('/mails/successfulbooking', mails.successfulBooking);
+    server.post('/mails/successfulbooking', mails.successfulBooking);
 
     server.get('/', (req, res) => {
       const actualPage = '/'
