@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const forceSsl = require('force-ssl-heroku');
 const next = require('next')
 const nextI18NextMiddleware = require('next-i18next/middleware')
 const nextI18next = require('./i18n')
@@ -11,13 +12,14 @@ const handle = app.getRequestHandler()
 app
   .prepare()
   .then(() => {
-    const server = express()
-    const api = require('./api/queries')
-    const mails = require('./api/mails')
+    const server = express();
+    const api = require('./api/queries');
+    const mails = require('./api/mails');
 
-    server.use(nextI18NextMiddleware(nextI18next))
-    server.use(bodyParser.urlencoded({ extended: false }))
-    server.use(bodyParser.json())
+    server.use(nextI18NextMiddleware(nextI18next));
+    server.use(bodyParser.urlencoded({ extended: false }));
+    server.use(bodyParser.json());
+    server.use(forceSsl);
 
     server.get('/api/locationsearch', api.getLocationsBySubstring);
     server.get('/api/locationdata', api.getLocationData);
