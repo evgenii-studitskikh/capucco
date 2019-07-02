@@ -7,19 +7,24 @@ const successfulBooking = (request, response) => {
 
   const {
     firstName,
+    lastName,
     email,
   } = request.body;
+
+  const template = require('../mails/successful-booking')
 
   const data = {
     from: 'Capucco <noreply@capucco.com>',
     to: email,
     subject: 'Hello',
-    text: `Dear ${firstName}, thanks for using Capucco!`
+    html: template.successfulBooking({ firstName, lastName })
   };
   
-  mailgun.messages().send(data, function (error, body) {
-    console.log(body);
-  });
+  mailgun
+    .messages()
+    .send(data, (error, body) => {
+      response.send(body);
+    });
 }
 
 module.exports = {
