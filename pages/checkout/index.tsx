@@ -18,17 +18,40 @@ import {
   Submit,
 } from './styled';
 
-class Checkout extends React.Component {
+class Checkout extends React.Component{
+
+  public state = {
+    valueFirstName: '',
+    valueLastName: '',
+    valueEmail: '',
+    valuePhone: '',
+    isSuccessfulSent: false,
+  }
 
   private handleSend = () => {
+
+    const {
+      valueFirstName,
+      valueLastName,
+      valueEmail,
+      valuePhone,
+    } = this.state;
+
     let url = window.location.origin
+
     axios.post(`${url}/mails/successfulbooking`, {
-        firstName: 'Fred', //change to input values
-        email: 'estrueall@gmail.com' //change to input values
+        firstName: valueFirstName,
+        lastName: valueLastName,
+        email: valueEmail,
+        phone: valuePhone,
       })
       .then((response) => {
 
-        console.log(response)
+        if (response.status === 200 && response.data.id) {
+          this.setState({
+            isSuccessfulSent: true
+          })
+        }
       })
       .catch((error) => {
         // handle error
@@ -36,7 +59,21 @@ class Checkout extends React.Component {
       })
   }
 
+  private handleInputChange = (field: string, value: string) => {
+    this.setState({
+      [field]: value
+    });
+  }
+
   render() {
+
+    const {
+      valueFirstName,
+      valueLastName,
+      valueEmail,
+      valuePhone,
+      isSuccessfulSent,
+    } = this.state;
 
     return (
       <Container>
@@ -47,23 +84,41 @@ class Checkout extends React.Component {
         <Wrapper>
           <Content>
             <Title>It's almost yours! We just need a few more details.</Title>
-            <Form>
-              <Input
-                label='First Name'
-              />
-              <Input
-                label='Last Name'
-              />
-              <Input
-                label='Email'
-              />
-              <Input
-                label='Phone'
-              />
-              <Submit onClick={this.handleSend}>
-                Submit
-              </Submit>
-            </Form>
+            {isSuccessfulSent ?
+              <div>Successful!</div>
+            :
+              <Form>
+                <Input
+                  label='First Name'
+                  required
+                  value={valueFirstName}
+                  onChange={(value) => this.handleInputChange('valueFirstName', value)}
+                />
+                <Input
+                  top='20px'
+                  label='Last Name'
+                  required
+                  value={valueLastName}
+                  onChange={(value) => this.handleInputChange('valueLastName', value)}
+                />
+                <Input
+                  top='20px'
+                  label='Email'
+                  required
+                  value={valueEmail}
+                  onChange={(value) => this.handleInputChange('valueEmail', value)}
+                />
+                <Input
+                  top='20px'
+                  label='Phone'
+                  value={valuePhone}
+                  onChange={(value) => this.handleInputChange('valuePhone', value)}
+                />
+                <Submit onClick={this.handleSend}>
+                  Submit
+                </Submit>
+              </Form>
+            }
           </Content>
         </Wrapper>
         <Footer />

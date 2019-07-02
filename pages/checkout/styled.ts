@@ -10,8 +10,20 @@ export const Title = styled.h1`
   font-size: 24px;
 `;
 
-export const Form = styled.div``;
+export const Form = styled.div`
+  width: 200px;
+`;
 
 export const Submit = styled.button`
-
+  width: 200px;
+  height: 40px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 2px;
+  background: #0666CC;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  cursor: pointer;
+  outline: none;
 `;
