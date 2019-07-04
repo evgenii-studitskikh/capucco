@@ -3,31 +3,21 @@ import axios from 'axios';
 
 import {
   Container,
+} from './styled';
+import {
   Field,
   Dropdown,
   Place,
-} from './styled';
+} from '../styled';
 import {
   ILocation,
+  ILocationProps,
+  ILocationState,
 } from '../types';
-
-interface ILocationProps {
-  locationValue: ILocation,
-  onLocationChange: (location: ILocation) => void,
-  placeholder: string,
-}
-
-interface ILocationState {
-  inputValue: string,
-  isTyping: any,
-  isDropDownVisible: boolean,
-  data: ILocation[],
-  isDataLoading: boolean,
-}
 
 export default class Location extends React.Component<ILocationProps, ILocationState> {
 
-  public state = {
+  public state: ILocationState = {
     inputValue: '',
     isTyping: null,
     isDropDownVisible: false,

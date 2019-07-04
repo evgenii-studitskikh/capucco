@@ -11,17 +11,23 @@ import {
 import Location from './Location';
 import Subject from './Subject';
 import {
-  ILocation
+  ILocation,
+  ISubject,
 } from './types';
 
 interface ISearchFormState {
-  location: ILocation
+  location: ILocation,
+  subject: ISubject
 }
 
 class SearchForm extends React.Component<any, ISearchFormState> {
 
   public state = {
     location: {
+      id: 0,
+      name: ''
+    },
+    subject: {
       id: 0,
       name: ''
     }
@@ -37,7 +43,8 @@ class SearchForm extends React.Component<any, ISearchFormState> {
     const { t }: any = this.props;
 
     const {
-      location
+      location,
+      subject,
     } = this.state;
     
     return (
@@ -50,6 +57,7 @@ class SearchForm extends React.Component<any, ISearchFormState> {
             placeholder={t('location_placeholder')}
           />
           <Subject
+            subjectValue={subject}
             placeholder={t('subject_placeholder')}
           />
           <Link href={`/searchresults?location=${location.id}`}>
