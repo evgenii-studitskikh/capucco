@@ -1,10 +1,17 @@
 # Capucco
+A platform things to do around the world focused on learning courses such as language courses, cooking classes, driving schools, etc. 
 
 Capucco is my personal startup. I'm working with it alone yet, so my responsibility's including design, database architecture, API creating as well.
 
 ## Demo
 
 I'm deploying releases with new features to Heroku: <a href='https://www.capucco.herokuapp.com'>capucco.herokuapp.com</a>
+
+<div align="center">
+  <a href="https://www.capucco.herokuapp.com">
+    <img alt="capucco on heroku" src="https://firebasestorage.googleapis.com/v0/b/capucco-1555146352613.appspot.com/o/screenshots%2Fshot-20190703-9836-1qo4x38.jpeg?alt=media&token=99849e46-17ca-435b-9b2e-9c8ba6af30f8" />
+  </a>
+</div>
 
 ## Getting Started
 
