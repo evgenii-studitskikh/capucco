@@ -2,14 +2,16 @@ import React from 'react';
 import Link from 'next/link'
 
 import {
-  Container,
-  Wrapper,
   Header,
   Places,
   Place,
   PlaceCourses,
   PlaceLink,
 } from './styled'
+import {
+  Container,
+  Wrapper,
+} from '../../pages/styled';
 
 interface IPlace {
   id: number,

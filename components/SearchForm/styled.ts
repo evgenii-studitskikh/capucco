@@ -15,11 +15,16 @@ export const Form = styled.div`
   padding: 5px;
   background: rgba(145, 145, 145, 0.2);
   border-radius: 2px;
+
+  @media only screen and (max-width: 980px) {
+    flex-direction: column;
+  }
 `;
 
 export const ApplyButton = styled.button`
   width: 150px;
   margin-left: 6px;
+  padding: 0;
   font-size: 16px;
   text-transform: uppercase;
   background: #0666CC;
@@ -28,6 +33,12 @@ export const ApplyButton = styled.button`
   border-radius: 2px;
   outline: none;
   cursor: pointer;
+
+  @media only screen and (max-width: 980px) {
+    width: 100%;
+    height: 50px;
+    margin: 0;
+  }
 `;
 
 
@@ -42,6 +53,10 @@ export const Field = styled.input`
   background: url("/static/icons/place.svg") #FFFFFF 5px center no-repeat;
   background-size: 25px;
   outline: none;
+
+  @media only screen and (max-width: 980px) {
+    width: calc(100% - 35px);
+  }
 `;
 
 export const Dropdown = styled.div`

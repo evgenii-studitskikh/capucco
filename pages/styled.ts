@@ -11,4 +11,8 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   width: 1132px;
+
+  @media only screen and (max-width: 1145px) {
+    width: calc(100% - 20px);
+  }
 `;

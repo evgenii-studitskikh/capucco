@@ -2,14 +2,16 @@ import React from 'react';
 import Link from 'next/link'
 
 import {
-  Container,
-  Wrapper,
   Header,
   Cards,
   Card,
   CardTitle,
   CardDescription,
 } from './styled'
+import {
+  Container,
+  Wrapper,
+} from '../../pages/styled';
 
 interface ICourse {
   title: string,

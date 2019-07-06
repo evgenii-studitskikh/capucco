@@ -15,6 +15,10 @@ export const Wrapper = styled.div`
   width: 1132px;
   font-size: 14px;
   color: #434656;
+
+  @media only screen and (max-width: 1145px) {
+    width: calc(100% - 20px);
+  }
 `;
 
 export const FilterItem = styled.div`

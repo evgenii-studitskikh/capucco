@@ -1,23 +1,12 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 50px 10px 0 10px;
-  background: #FFFFFF;
-`;
-
-export const Wrapper = styled.div`
-  width: 1132px;
-`;
-
 export const Header = styled.h2`
   font-size: 18px;
 `;
 
 export const Cards = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 export const Card: any = styled.div`
@@ -53,6 +42,10 @@ export const Card: any = styled.div`
     height: 100%;
     background: rgba(0,0,0,0.4);
     z-index: 1;
+  }
+
+  &:last-child {
+    margin-right: 0;
   }
 `;
 
