@@ -7,18 +7,19 @@ import {
   Item
 } from './styled';
 
-interface IData {
+export interface ISelectData {
   label: string,
   value: string
 }
 
 interface ISelectProps {
   label: string,
-  data: IData[],
+  data: ISelectData[],
+  onSelect: (value: ISelectData) => void
 }
 
 interface ISelectState {
-  selectedItem: IData,
+  selectedItem: ISelectData,
   isDropdownOpen: boolean,
 }
 
@@ -43,13 +44,13 @@ export default class Select extends React.Component<ISelectProps, ISelectState> 
     }));
   }
 
-  public handleItemClick = (item: IData) => {
+  public handleItemClick = (item: ISelectData) => {
     this.setState((prevState: ISelectState) => ({
       selectedItem: item,
       isDropdownOpen: !prevState.isDropdownOpen
     }));
 
-    window.console.log('item click!')
+    this.props.onSelect(item);
   }
 
   public handleClickOutside = (e: any) => {
@@ -93,7 +94,7 @@ export default class Select extends React.Component<ISelectProps, ISelectState> 
         </Field>
         {isDropdownOpen &&
           <Dropdown>
-            {data.map((item: IData, index: number) =>
+            {data.map((item: ISelectData, index: number) =>
               <Item
                 key={index}
                 onClick={() => this.handleItemClick(item)}

@@ -26,12 +26,16 @@ import {
   Field,
   BookButton,
   Price,
+  TotalPrice,
   MapContainer,
   WhatYouLearn,
   WhatYouLearnHeader,
   WhatYouLearnList,
   WhatYouLearnItem,
 } from './styled';
+import {
+  ISelectData
+} from '../../components/Select'
 
 interface IImage {
   id: number,
@@ -54,13 +58,15 @@ interface ICourseProps {
 }
 
 interface ICourseState {
-  activeImage: number
+  activeImage: number,
+  selectedPersons: number
 }
 
-class Course extends React.Component<ICourseProps, ICourseState> {
+class Course extends React.PureComponent<ICourseProps, ICourseState> {
 
-  state = {
-    activeImage: 0
+  public state = {
+    activeImage: 0,
+    selectedPersons: 1
   }
 
   static async getInitialProps ({ req, query }: any) {
@@ -127,7 +133,8 @@ class Course extends React.Component<ICourseProps, ICourseState> {
     } = this.props.courseData
 
     const {
-      activeImage
+      activeImage,
+      selectedPersons,
     } = this.state
 
     return (
@@ -150,6 +157,7 @@ class Course extends React.Component<ICourseProps, ICourseState> {
                       key={image.id}
                       src={image.url}
                       onMouseEnter={() => this.handleMiniatureClick(index)}
+                      onClick={() => this.handleMiniatureClick(index)}
                       isActive={index === activeImage}
                     />
                   )}
@@ -174,6 +182,7 @@ class Course extends React.Component<ICourseProps, ICourseState> {
               <Field>
                 <Select
                   label='Date'
+                  onSelect={(value: ISelectData) => console.log(value)}
                   data={availability.map(date => {
                     return({
                       label: date, 
@@ -185,10 +194,11 @@ class Course extends React.Component<ICourseProps, ICourseState> {
               <Field>
                 <Select
                   label='Persons'
+                  onSelect={(value: ISelectData) => this.setState({selectedPersons: Number(value.value)})}
                   data={[{label: '1 Person', value: '1'}, {label: '2 Persons', value: '2'}]}
                 />
               </Field>
-              Total: $ {price * 2}
+              <TotalPrice>Total: $ {price * selectedPersons}</TotalPrice>
               <Link href={`/checkout`}>
                 <BookButton>Checkout</BookButton>
               </Link>

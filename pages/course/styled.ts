@@ -65,6 +65,13 @@ export const Price = styled.span`
   font-weight: bold;
 `;
 
+export const TotalPrice = styled.span`
+  display: block;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+`;
+
 export const Field = styled.div`
   margin-top: 10px;
 `;
