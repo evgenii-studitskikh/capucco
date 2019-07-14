@@ -52,6 +52,7 @@ export const PartnerForm = ({
           <Input
             top='20px'
             label='Password'
+            type='password'
             value={valueEmail}
             onChange={(value: string) => setEmailName(value)}
           />

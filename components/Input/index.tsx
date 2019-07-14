@@ -9,6 +9,7 @@ interface IInputProps {
   label: string,
   top?: string,
   required?: boolean,
+  type?: string,
   value: string,
   onChange: (value: string) => void,
 }
@@ -21,6 +22,7 @@ export default class Input extends React.Component<IInputProps> {
       label,
       top,
       value,
+      type,
       onChange,
       required,
     } = this.props;
@@ -30,6 +32,7 @@ export default class Input extends React.Component<IInputProps> {
         {label}
         <Field
           value={value}
+          type={type}
           required={required || false}
           onChange={(e: any) => onChange(e.target.value)}
         />
