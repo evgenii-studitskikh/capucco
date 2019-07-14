@@ -11,7 +11,7 @@ import {
 } from '../styled';
 import {
   Title,
-  SubTitle,
+  HeadlineWrapper,
   Headline,
   HeadlineBackground,
   FormContainer,
@@ -19,9 +19,38 @@ import {
   InfoSeparator,
 } from './styled';
 
-class Partnership extends React.Component {
+interface IPartnershipState {
+  isLoginFormActive: boolean,
+  isRegistrationFormActive: boolean
+}
 
-  render() {
+class Partnership extends React.Component<any, IPartnershipState> {
+
+  public state = {
+    isLoginFormActive: false,
+    isRegistrationFormActive: true
+  }
+
+  private handleLoginButtonClick = () => {
+    this.setState({
+      isLoginFormActive: true,
+      isRegistrationFormActive: false
+    })
+  }
+
+  public handleRegistrationButtonClick = () => {
+    this.setState({
+      isLoginFormActive: false,
+      isRegistrationFormActive: true
+    })
+  }
+
+  public render() {
+
+    const {
+      isLoginFormActive,
+      isRegistrationFormActive
+    } = this.state;
 
     return (
       <Container>
@@ -30,18 +59,34 @@ class Partnership extends React.Component {
         </Head>
         <Header inverted/>
         <Wrapper>
-          <HeadlineBackground />
-          <Headline>
-            <Info>
-              <Title>Create your own course on Capucco and get more students!</Title>
-              <InfoSeparator>or</InfoSeparator>
-              <SubTitle active>Log in</SubTitle>
-              <SubTitle>if you already did it</SubTitle>
-            </Info>
-            <FormContainer>
-              <PartnerForm />
-            </FormContainer>
-          </Headline>
+          <HeadlineWrapper>
+            <HeadlineBackground />
+            <Headline>
+              <Info>
+                <Title 
+                  active={isLoginFormActive}
+                  onClick={this.handleRegistrationButtonClick}
+                >
+                  Create
+                </Title>
+                <Title> your own course on Capucco and get more students!</Title>
+                <InfoSeparator>or</InfoSeparator>
+                <Title 
+                  active={isRegistrationFormActive}
+                  onClick={this.handleLoginButtonClick}
+                >
+                  Log in
+                </Title>
+                <Title> if you already did it</Title>
+              </Info>
+              <FormContainer>
+                <PartnerForm
+                  isLoginFormActive={isLoginFormActive}
+                  isRegistrationFormActive={isRegistrationFormActive}
+                />
+              </FormContainer>
+            </Headline>
+          </HeadlineWrapper>
         </Wrapper>
         <Footer />
       </Container>

@@ -35,7 +35,6 @@ export default class MyDocument extends Document {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta charSet="utf-8" />
           <link rel="icon" type="image/x-icon" href="/static/icons/favicon.ico" />
-          <link href="https://fonts.googleapis.com/css?family=Noto+Sans+Bold" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet" />
           <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzBCVQTEbTeOC1BVen64lsdSZ2hartG6Q&v=3.exp&libraries=geometry,drawing,places" />
         </Head>
