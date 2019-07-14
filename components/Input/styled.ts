@@ -8,7 +8,7 @@ export const Label: any = styled.label`
 `;
 
 export const Field: any = styled.input`
-  width: 100%;
+  width: calc(100% - 20px);
   margin-top: 5px;
   padding: 10px;
   border: none;

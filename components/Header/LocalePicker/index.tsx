@@ -25,6 +25,7 @@ const LocaleImage = styled.img`
 
 const LocaleName = styled.div`
   margin-right: 10px;
+  color: #000000;
 `;
 
 const Dropdown = styled.div`

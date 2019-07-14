@@ -10,16 +10,29 @@ import {
   HeaderItem,
 } from './styled';
 
-export default class Header extends React.Component {
+interface IHeaderProps {
+  inverted?: boolean
+}
 
-  render() {    
+export default class Header extends React.Component<IHeaderProps> {
+
+  render() {
+
+    const {
+      inverted
+    }: IHeaderProps = this.props;
+
     return (
-      <Container>
+      <Container inverted={inverted}>
         <Column>
           <Link
             href={`/`}
           >
-            <Logo src='./static/images/logo.png'/>
+            <Logo src={inverted
+                ? './static/images/logo-white.png'
+                : './static/images/logo.png'
+              }
+            />
           </Link>
           <Link
             href={`/about`}
