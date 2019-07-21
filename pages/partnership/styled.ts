@@ -97,7 +97,7 @@ export const HeadlineBackground = styled.div`
     content: '';
     position: absolute;
     width: 100%;
-    height: 800px;
+    height: 100vh;
     background: linear-gradient(to bottom, rgba(6, 102, 204, 0.7) 0%, rgba(0,0,0,0.5) 50%);
   }
 `;
