@@ -1,6 +1,9 @@
 import React from 'react';
+import { Provider } from "react-redux";
 import App, { Container } from 'next/app';
 import { appWithTranslation } from '../i18n';
+
+import { store } from "../store";
 
 class Capucco extends App {
   render() {
@@ -9,9 +12,11 @@ class Capucco extends App {
       pageProps 
     } = this.props
     return (
-      <Container>
-        <Component {...pageProps} />
-      </Container>
+      <Provider store={store}>
+        <Container>
+          <Component {...pageProps} />
+        </Container>
+      </Provider>
     )
   }
 }

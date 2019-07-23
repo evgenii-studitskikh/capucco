@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { connect } from "react-redux";
 import { withRouter } from 'next/router';
 import axios from 'axios';
 
@@ -36,6 +37,10 @@ import {
 import {
   ISelectData
 } from '../../components/Select'
+import {
+  setActiveCourse, 
+  setActiveCourseType
+} from '../../store/actions/course';
 
 interface IImage {
   id: number,
@@ -43,7 +48,7 @@ interface IImage {
   isCover: boolean
 }
 
-interface ICourse {
+export interface ICourse {
   title: string,
   address: string,
   description: string,
@@ -55,6 +60,7 @@ interface ICourse {
 
 interface ICourseProps {
   courseData: ICourse,
+  setActiveCourse: setActiveCourseType
 }
 
 interface ICourseState {
@@ -112,6 +118,15 @@ class Course extends React.PureComponent<ICourseProps, ICourseState> {
       courseData: courseData,
       namespacesRequired: ['common', 'footer']
     };
+  }
+
+  public componentDidMount() {
+    const {
+      setActiveCourse,
+      courseData
+    } = this.props;
+
+    setActiveCourse(courseData);
   }
 
   private handleMiniatureClick(index: number) {
@@ -218,4 +233,8 @@ class Course extends React.PureComponent<ICourseProps, ICourseState> {
   }
 }
 
-export default withRouter(Course)
+export default withRouter(
+  connect(null, { 
+    setActiveCourse,
+  })(Course)
+);
