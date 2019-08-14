@@ -21,7 +21,9 @@ I'm deploying releases with new features to Heroku: <a href='https://www.capucco
 ## Built With
 
 * [React](https://github.com/facebook/react)
+* [Redux](https://github.com/reduxjs/redux)
 * [Next.js](https://github.com/zeit/next.js/)
+* [Styled-components](https://github.com/styled-components/styled-components)
 * [TypeScript](https://www.typescriptlang.org/)
 * [Express](https://github.com/expressjs/express)
 * [PostgreSQL](https://www.postgresql.org/)
