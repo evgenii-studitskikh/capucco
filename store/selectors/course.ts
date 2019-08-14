@@ -1,0 +1,1 @@
+export const getActiveCourse = (state: any) => state.course.activeCourse;

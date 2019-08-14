@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
 export const Content = styled.main`
-  padding: 15px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 15px;
   margin-top: 40px;
   box-shadow: 0px 3px 5px 0 rgba(174,174,174,0.5);
 `;
 
 export const Title = styled.h1`
+  position: absolute;
+  top: 0;
   font-size: 24px;
 `;
 
@@ -27,3 +32,11 @@ export const Submit = styled.button`
   cursor: pointer;
   outline: none;
 `;
+
+export const Course = styled.section`
+  width: 50%;
+`;
+
+export const CourseTitle = styled.h2``;
+
+export const CourseDescription = styled.p``;
