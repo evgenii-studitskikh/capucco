@@ -7,6 +7,10 @@ export const Header = styled.h2`
 export const Cards = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media only screen and (max-width: 980px) {
+    flex-direction: column;
+  }
 `;
 
 export const Card: any = styled.div`
@@ -25,12 +29,20 @@ export const Card: any = styled.div`
   border-radius: 2px;
   box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.5);
   cursor: pointer;
-  transition: all 0.5s;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+
+  @media only screen and (max-width: 980px) {
+    width: calc(100% - 30px);
+  }
 
   &:hover {
-    transition: all 0.5s;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
     box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.5);
     transform: scale(1.01);
+
+    @media only screen and (max-width: 980px) {
+      transform: none;
+    }
   }
 
   &::after {
