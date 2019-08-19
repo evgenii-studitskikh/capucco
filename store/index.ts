@@ -3,7 +3,7 @@ import { createLogger } from "redux-logger";
 
 import { rootReducer } from './reducers';
 
-const dev = process.env.NODE_ENV !== 'production';
+const dev = process.env.NODE_ENV !== 'production'
 
 const logger = createLogger({
   collapsed: true

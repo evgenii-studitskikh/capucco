@@ -60,6 +60,7 @@
     "react-redux": "^7.1.0",
     "react-svg": "^10.0.9",
     "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
     "styled-components": "^4.2.0",
     "typescript": "^3.4.3"
   },
@@ -83,7 +84,6 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "jest": "^24.8.0",
     "react-test-renderer": "^16.8.6",
-    "redux-logger": "^3.0.6",
     "ts-jest": "^24.0.2"
   }
 }
