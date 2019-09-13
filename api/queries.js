@@ -97,6 +97,19 @@ const getPopularLocationsData = (request, response) => {
   })
 }
 
+const getFeaturedCoursesData = (request, response) => {
+
+  pool.query(
+    `SELECT id, name, description, location, subject, image FROM course_sets`,
+    (error, results) => {
+      if (error) {
+        console.error(error);
+      }
+      
+      results && response.status(200).json(results.rows)
+  })
+}
+
 module.exports = {
   getLocationsBySubstring,
   getLocationData,
@@ -104,4 +117,5 @@ module.exports = {
   getCourseData,
   getCourseImages,
   getPopularLocationsData,
+  getFeaturedCoursesData,
 }

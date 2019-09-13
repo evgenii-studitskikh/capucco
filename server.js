@@ -12,10 +12,11 @@ const handle = app.getRequestHandler()
 app
   .prepare()
   .then(() => {
+    
     const server = express();
     const api = require('./api/queries');
     const mails = require('./api/mails');
-
+    
     server.use(nextI18NextMiddleware(nextI18next));
     server.use(bodyParser.urlencoded({ extended: false }));
     server.use(bodyParser.json());
@@ -27,6 +28,7 @@ app
     server.get('/api/coursedata', api.getCourseData);
     server.get('/api/courseimages', api.getCourseImages);
     server.get('/api/popularlocations', api.getPopularLocationsData);
+    server.get('/api/featuredcourses', api.getFeaturedCoursesData);
 
     server.post('/mails/successfulbooking', mails.successfulBooking);
 

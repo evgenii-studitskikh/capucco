@@ -27,6 +27,7 @@ const SearchContainer = styled.div`
 
 interface IProps {
   popularPlacesData: any[],
+  featuredCoursesData: any[],
   namespacesRequired: string[]
 }
 
@@ -35,6 +36,7 @@ export default class extends React.Component<IProps> {
   static async getInitialProps({ req, query }: any) {
 
     let popularPlacesData: any[] = []
+    let featuredCoursesData: any[] = []
     const url = req && req.headers && req.headers.host ? 'http://'+req.headers.host : window.location.origin
 
     // get popular locations data
@@ -47,9 +49,20 @@ export default class extends React.Component<IProps> {
         // handle error
         console.log(error);
       })
-    
 
+    // get featured courses data
+    await axios.get(`${url}/api/featuredcourses`)
+      .then((response) => {
+
+        featuredCoursesData = response.data
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      })
+    
     return {
+      featuredCoursesData: featuredCoursesData,
       popularPlacesData: popularPlacesData,
       namespacesRequired: ['common', 'search-form', 'footer']
     }
@@ -58,7 +71,8 @@ export default class extends React.Component<IProps> {
   render() {    
 
     const {
-      popularPlacesData
+      popularPlacesData,
+      featuredCoursesData
     } = this.props
 
     return (
@@ -70,7 +84,7 @@ export default class extends React.Component<IProps> {
         <SearchContainer>
           <SearchForm />
         </SearchContainer>
-        <FeaturedCourses />
+        <FeaturedCourses data={featuredCoursesData}/>
         <PopularPlaces data={popularPlacesData}/>
         <Footer />
       </Container>
