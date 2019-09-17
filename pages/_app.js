@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from "react-redux";
 import App, { Container } from 'next/app';
-import { appWithTranslation } from '../i18n';
+import { appWithTranslation } from '../server/i18n.mjs';
 
 import { store } from "../store";
 

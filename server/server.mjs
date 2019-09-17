@@ -1,9 +1,12 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const forceSsl = require('force-ssl-heroku');
-const next = require('next')
-const nextI18NextMiddleware = require('next-i18next/middleware')
-const nextI18next = require('./i18n')
+import express from 'express'
+import bodyParser from 'body-parser'
+import forceSsl from 'force-ssl-heroku'
+import next from 'next'
+import nextI18NextMiddleware from 'next-i18next/middleware'
+import nextI18next from './i18n.mjs'
+
+import api from './api/queries'
+import mails from './api/mails'
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -14,8 +17,6 @@ app
   .then(() => {
     
     const server = express();
-    const api = require('./api/queries');
-    const mails = require('./api/mails');
     
     server.use(nextI18NextMiddleware(nextI18next));
     server.use(bodyParser.urlencoded({ extended: false }));
