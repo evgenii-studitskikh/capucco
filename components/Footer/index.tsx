@@ -1,5 +1,5 @@
 import React from 'react';
-import { withNamespaces } from '../../i18n';
+import { withNamespaces } from '../../server/i18n.mjs';
 
 import {
   Container,
