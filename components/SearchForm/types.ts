@@ -23,7 +23,7 @@ export interface ISubject {
 }
 
 export interface ISubjectProps {
-  subjectValue: ISubject,
+  value: ISubject,
   placeholder: string
 }
 
