@@ -41,7 +41,6 @@ export const ApplyButton = styled.button`
   }
 `;
 
-
 export const Field = styled.input`
   position: relative;
   width: 300px;
