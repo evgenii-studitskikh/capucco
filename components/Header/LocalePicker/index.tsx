@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { i18n, withNamespaces } from '../../../i18n';
+import { withNamespaces } from '../../../server/i18n.mjs';
 
 const Container = styled.div`
   position: relative;

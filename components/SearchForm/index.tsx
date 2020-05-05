@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link'
 
-import { withNamespaces } from '../../i18n';
+import { withNamespaces } from '../../server/i18n.mjs';
 import {
   Container,
   Header,
@@ -9,7 +9,7 @@ import {
   ApplyButton,
 } from './styled'
 import Location from './Location';
-import Subject from './Subject';
+import { Subject } from './Subject';
 import {
   ILocation,
   ISubject,
@@ -57,7 +57,7 @@ class SearchForm extends React.Component<any, ISearchFormState> {
             placeholder={t('location_placeholder')}
           />
           <Subject
-            subjectValue={subject}
+            value={subject}
             placeholder={t('subject_placeholder')}
           />
           <Link href={`/searchresults?location=${location.id}`}>
