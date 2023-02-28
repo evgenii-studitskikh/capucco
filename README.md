@@ -1,7 +1,5 @@
 # Capucco
-A platform things to do around the world focused on learning courses such as language courses, cooking classes, driving schools, etc. 
-
-Capucco is my personal startup. I'm working with it alone yet, so my responsibility's including design, database architecture, API creating as well.
+Capucco is a personal startup focused on providing a platform for learning courses such as language courses, cooking classes, driving schools, and other activities from around the world. As the sole member of the team, my responsibilities include designing the platform, creating the database architecture, and developing the APIs.
 
 ## Demo
 
